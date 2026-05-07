@@ -3,24 +3,143 @@
 This chapter defines the specific use cases for federated authentication and authorization in Earth Observation systems.
 
 
-## ESA/NASA MAAP 
-<mark>Note</mark> _[SMB]: Not sure about how much detail to go into. Can include more technical details if necessary. Also this is still in development and we dont' have a complete and functioning architecture yet._
+## ESA/NASA MAAP
 
-The ESA-NASA Multi-Mission Algorithm and Analysis Platform (MAAP) is a jointly developed initiative comprising two cloud-based collaborative platforms: ESA MAAP and NASA MAAP. While operated independently, both platforms share a common architecture, design, and interoperability standards. They support the BIOMASS, NISAR, and GEDI satellite missions by integrating data, algorithms, and computing resources. A federated identity management system enables users to authenticate via their respective “home” platforms while accessing services across both. A joint landing page provides unified access, and APIs facilitate coordination for identity federation and cross-platform functionality. This setup allows for bidirectional interoperability, including shared data access and processor deployment through federated identity providers and API gateways.
+### Motivation and Scope
 
-#### Joint Data Access Use-Cases for ESA-NASA MAAPS: 
-1. ESA MAAP user accessing NASA datasets
-2. NASA MAAP user accessing datasets in ESA's MAAP STAC catalog
-3. Moving user data between ESA AND NASA MAAP
-4. Data Accses using federated search for data discovery 
+The ESA–NASA Multi‑Mission Algorithm and Analysis Platform (MAAP) is a jointly developed initiative comprising two independently operated but interoperable cloud‑based platforms. While operated under separate organizational governance, the ESA and NASA MAAPs share a common architectural vision, interoperability standards, and mission objectives, supporting missions such as BIOMASS, NISAR, and GEDI.
 
-#### Joint Processor Deployment and Execution for ESA-NASA MAAPS
-The user should be able to deploy and execute a processor across both platforms from their notebook environment by changing only the endpoint. This enables users to run the same processor across different datasets, in turn allowing them to then retrieve and compare the outputs from both platforms to validate consistency.
+### User‑Centric Goals of MAAP Federation
 
-The preconditions for these cross-platform use cases is IDP Federation: 
+_[SMB] The MAAP federation architecture is evolving; the level of technical detail presented here focuses on conceptual goals and intended capabilities rather than a finalized operational architecture._
 
-- NASA users can login to ESA MAAP using their NASA EarthData Account (NASA IdP), while ESA users can login into the NASA MAAP with their ESA account (eo sign in / EOIAM) as shown in the images below.
-- While users can log into the other MAAP with their IdP, the API gateway allows authorized access to the datasets, anlayses, processors without the user actually needing to log into the other MAAP. 
+The goal of federation between the ESA and NASA MAAP platforms is to enable seamless scientific collaboration across organizational boundaries while preserving platform autonomy. From a user perspective, federation enables scientists to access data, algorithms, and processing environments hosted on either MAAP using their existing organizational identity. From a platform perspective, federation supports controlled access to protected resources, interoperability of services, and coordinated execution of distributed workflows without requiring centralised identity or security infrastructure.
+
+### Value‑Adding Cross‑Platform Use Cases
+
+Federation between ESA and NASA MAAP platforms enables a set of use cases that directly support scientific workflows. These use cases focus on accessing, combining, and processing data across platforms, rather than on the mechanics of identity federation itself.
+
+#### Federated Data Discovery and Access
+
+Federated access enables users to discover and retrieve datasets hosted on either MAAP platform. Users search across distributed catalogues, access protected datasets, and retrieve data regardless of which organization hosts the underlying repository.
+
+This capability supports common EO workflows where relevant data is spread across agency‑specific platforms and removes the need for users to maintain multiple accounts or navigate divergent access procedures.
+
+#### Cross‑Platform Processing and Analysis
+
+The joint MAAP architecture enables users to deploy and execute processing workflows across both platforms. From a user’s notebook or analysis environment, the same processor is executed against datasets hosted on different MAAPs by changing only the target endpoint.
+
+This approach supports execution of the same processor across different datasets and enables users to retrieve and compare the outputs from both platforms to validate consistency.
+
+### Federation as the Enabling Mechanism
+
+The cross‑platform use cases described above rely on an established identity federation between ESA and NASA. Identity federation provides mutual recognition of user identities asserted by each organization’s Identity Provider and forms a foundational capability for controlled access to protected MAAP resources.
+
+Identity federation is not an end in itself, but an enabling mechanism through which federated data access and processing use cases are realized in practice. Once established, it supports both interactive user access and non‑interactive platform‑level interactions.
+
+### Federation Use Case: Bilateral Delegated Authentication and Entitlement Propagation
+
+This use case illustrates how identity federation between ESA and NASA is realized in practice on the MAAP platforms, enabling secure, user‑centric access to protected EO resources across organizational boundaries while preserving local governance and authorization enforcement.
+
+#### Context
+
+The BIOMASS mission benefits from close collaboration between ESA and NASA partner infrastructures, enabling scientists to access Mission Analysis and Application Platform (MAAP) resources operated by both organizations. Users authenticate using their respective “home” Identity Providers (IdPs), while resources are hosted across organizational boundaries.
+
+Entitlements are issued by the user’s home organization and made available to the hosting MAAP via federated interfaces; the authoritative source is platform‑specific and outside the scope of this use case.
+
+Authorization decisions are enforced at the MAAP level and depend on entitlement information exchanged between peered MAAP platforms rather than solely on identity provider assertions.
+
+#### Actors
+
+- End User  
+- Home Identity Provider  
+- Partner Identity Provider  
+- Peer platforms operated by ESA and NASA  
+  - Home BIOMASS MAAP  
+  - Hosting BIOMASS MAAP  
+
+#### Preconditions
+
+- The user holds an account at their home organization (ESA EOIAM or NASA EDL).
+- The user has been granted the BIOMASS initiative entitlement at their home organization.
+- A bilateral trust relationship exists between ESA EOIAM and NASA EDL.
+- Federated entitlement exchange between peered MAAPs has been established.
+
+#### Main Flow
+
+1. The user initiates access to a protected BIOMASS MAAP hosted by the partner organization (e.g. an ESA user accessing a NASA MAAP).
+2. The user authenticates using their home IdP (EOIAM or EDL).
+3. On first use of the federation:
+   - The user explicitly consents to the sharing of identity attributes on the originating side.
+   - The user accepts applicable terms and conditions on the receiving side.
+4. Upon successful authentication, the home IdP asserts the user’s identity and conveys a user identifier to the partner IdP.
+5. The receiving IdP validates the assertion and maps the remote user to a local security context.
+6. When accessing the MAAP environment, the hosting MAAP queries the peer MAAP for the user entitlement.
+7. The user is granted access to BIOMASS MAAP resources according to the conveyed entitlement, independent of whether the service is hosted at ESA or NASA.
+
+#### Postconditions
+
+The user is treated as a first‑class user on the receiving infrastructure:
+
+- Access control decisions are enforced locally.
+- The user creates API tokens or credentials.
+- The user performs actions supported by the MAAP according to their entitlement.
+
+No separate user registration or account provisioning is required at the partner organization.
+
+#### Key Properties
+
+- Bilateral federation with mutual recognition of identities.
+- Cross‑organization entitlement propagation.
+- Explicit user consent and legal acceptance at first use.
+- Operational equivalence between local and federated users.
+
+```mermaid
+sequenceDiagram
+    title BIOMASS MAAP – Bilateral Delegated Authentication and Authorization Flow
+
+    actor User
+    box "Home organization"
+        participant HomeIdP as Home IdP
+        participant MAAP as Home BIOMASS MAAP
+    end
+    box "Partner organization"
+        participant PartnerIdP as Partner IdP
+        participant P_MAAP as Hosting BIOMASS MAAP
+    end
+
+    Note over MAAP,P_MAAP: Either MAAP may be operated by ESA or NASA.<br/>Roles are determined per access request.
+
+    User->>P_MAAP: Access Hosting BIOMASS MAAP
+    P_MAAP->>User: Redirect to authenticate
+
+    User->>HomeIdP: Authenticate
+    HomeIdP-->>User: Authentication successful
+
+    alt First federation use
+        HomeIdP->>User: Request consent for attribute sharing
+        User-->>HomeIdP: Consent granted
+        PartnerIdP->>User: Present Terms & Conditions
+        User-->>PartnerIdP: Accept T&Cs
+    end
+
+    HomeIdP->>PartnerIdP: Assert identity (user identifier)
+
+    PartnerIdP->>PartnerIdP: Validate assertion
+    PartnerIdP->>PartnerIdP: Map to local security context
+
+    User->>P_MAAP: Access Hosting MAAP environment
+
+    P_MAAP->>MAAP: Query entitlement state (federated user identifier)
+    MAAP-->>P_MAAP: Entitlement information
+
+    P_MAAP-->>User: Access granted according to entitlement
+```
+
+### Extensions and Background
+#### Platform‑to‑Platform Federation (API‑Level)
+Beyond interactive user access, the ESA and NASA MAAP platforms establish trust relationships that enable direct platform‑to‑platform interactions. These mechanisms support backend authorization, entitlement validation, and the orchestration of distributed workflows across platforms.
+_[FWI] This area may evolve as platform capabilities mature; detailed protocol choices and implementation specifics are intentionally left out_
 
 <img width="1000" height="650" alt="image" src="https://github.com/user-attachments/assets/4bc950b8-a91b-4d32-937c-907d230fa6c0" />
 
@@ -30,85 +149,6 @@ The preconditions for these cross-platform use cases is IDP Federation:
 
 [ESA MAAP (BIOMASS)](https://portal.maap.eo.esa.int/biomass/)
 
-### Bilateral Delegated Authentication and Entitlement Propagation for BIOMASS MAAP
-#### Context
-The BIOMASS mission requires seamless collaboration between European and US partner infrastructures, enabling scientists to access distributed Mission Analysis and Application Platform (MAAP) resources operated by ESA and NASA. Users are authenticated by their respective “home” Identity Providers (IdPs), while services are hosted across organizational boundaries.
-#### Actors
-
-* End User (scientist or mission user)
-* ESA Identity Provider (EOIAM)
-* NASA Identity Provider (EDL)
-* BIOMASS MAAP services (ESA‑hosted and NASA‑hosted)
-
-#### Preconditions
-
-* The user holds an account at their home organization (ESA EOIAM or NASA EDL).
-* The user has been granted the BIOMASS initiative entitlement at their home IdP.
-* A bilateral trust relationship exists between ESA EOIAM and NASA EDL.
-
-#### Main Flow
-
-1. The user initiates access to a protected BIOMASS MAAP service hosted by the partner organization (e.g. an ESA user accessing a NASA MAAP service).
-2. The user authenticates using their home IdP (EOIAM or EDL).
-3. On first use of the federation:
-
-  * The user explicitly consents to the sharing of identity attributes on the originating side.
-  * The user accepts applicable terms and conditions on the receiving side.
-
-4. Upon successful authentication, the home IdP asserts the user’s identity and conveys the BIOMASS initiative entitlement to the partner IdP.
-5. The receiving IdP validates the assertion and maps the remote user to a local security context.
-6. The user is granted access to BIOMASS MAAP resources according to the conveyed entitlement, independent of whether the service is hosted at ESA or NASA.
-
-#### Postconditions
-
-The user is treated as a first‑class user on the receiving infrastructure:
-
-* Access control decisions are enforced locally.
-* The user can create API tokens or credentials.
-* The user can perform actions supported by the MAAP service according to their entitlement.
-
-No separate user registration or account provisioning is required at the partner organization.
-
-#### Key Properties
-
-* Bilateral federation with mutual recognition of identities.
-* Cross‑organization entitlement propagation.
-* Explicit user consent and legal acceptance at first use.
-* Operational equivalence between local and federated users.
-
-```mermaid
-sequenceDiagram
-    title Bilateral Delegated Authentication and Entitlement Propagation (BIOMASS MAAP)
-
-    actor User
-    participant HomeIdP as Home IdP (EOIAM or EDL)
-    participant PartnerIdP as Partner IdP (EDL or EOIAM)
-    participant MAAP as BIOMASS MAAP Service
-
-    User->>MAAP: Access MAAP resource
-    MAAP->>User: Redirect to authenticate
-
-    User->>HomeIdP: Authenticate
-    HomeIdP-->>User: Authentication successful
-
-    alt First federation use
-        HomeIdP->>User: Request consent for attribute sharing
-        User-->>HomeIdP: Consent granted
-    end
-
-    HomeIdP->>PartnerIdP: Assert identity + BIOMASS entitlement
-
-    alt First access at partner
-        PartnerIdP->>User: Present Terms & Conditions
-        User-->>PartnerIdP: Accept T&Cs
-    end
-
-    PartnerIdP->>PartnerIdP: Map to local user context
-    PartnerIdP->>MAAP: Authorize request
-    MAAP-->>User: Access granted
-    Note over User,MAAP: Federated users are treated as local users.<br/>Authorization and API access are enforced locally.
-  
-```
 ## NASA Use Case (WGISS-59) 
 
 ## DestinE 
