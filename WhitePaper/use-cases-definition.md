@@ -30,62 +30,85 @@ The preconditions for these cross-platform use cases is IDP Federation:
 
 [ESA MAAP (BIOMASS)](https://portal.maap.eo.esa.int/biomass/)
 
-### Bilateral delegated login and entitlement transmission (BIOMASS MAAP)
-
-An EOIAM user is able to use their EOIAM identity to log into EDL and vice versa. When performing this for the first time, the user has to agree to their infomration being shared (on the originating side) and accept terms and conditions (on the receiving side).
-If the authenticated user has the BIOMASS initiative entitlement on their "home idp", they are then able to proceed to the BIOMASS MAAP (either on ESA or NASA side) and access the resources. The entitlement by either ESA or NASA is transmitted to the opposing party and honored.
-The users are treated as normal users on the receiving idp which means they are able to create api tokens and perform actions just as if they had a local account.
-
-
-Use Case: Bilateral Delegated Authentication and Entitlement Propagation for BIOMASS MAAP
-Context
+### Bilateral Delegated Authentication and Entitlement Propagation for BIOMASS MAAP
+#### Context
 The BIOMASS mission requires seamless collaboration between European and US partner infrastructures, enabling scientists to access distributed Mission Analysis and Application Platform (MAAP) resources operated by ESA and NASA. Users are authenticated by their respective “home” Identity Providers (IdPs), while services are hosted across organizational boundaries.
-Actors
+#### Actors
 
-End User (scientist or mission user)
-ESA Identity Provider (EOIAM)
-NASA Identity Provider (EDL)
-BIOMASS MAAP services (ESA‑hosted and NASA‑hosted)
+* End User (scientist or mission user)
+* ESA Identity Provider (EOIAM)
+* NASA Identity Provider (EDL)
+* BIOMASS MAAP services (ESA‑hosted and NASA‑hosted)
 
-Preconditions
+#### Preconditions
 
-The user holds an account at their home organization (ESA or NASA).
-The user has been granted the BIOMASS initiative entitlement at their home IdP.
-A bilateral trust relationship exists between ESA EOIAM and NASA EDL.
+* The user holds an account at their home organization (ESA EOIAM or NASA EDL).
+* The user has been granted the BIOMASS initiative entitlement at their home IdP.
+* A bilateral trust relationship exists between ESA EOIAM and NASA EDL.
 
-Main Flow
+#### Main Flow
 
-The user initiates access to a protected BIOMASS MAAP service hosted by the partner organization (e.g. an ESA user accessing a NASA MAAP service).
-The user authenticates using their home IdP (EOIAM or EDL).
-On first use of the federation:
+1. The user initiates access to a protected BIOMASS MAAP service hosted by the partner organization (e.g. an ESA user accessing a NASA MAAP service).
+2. The user authenticates using their home IdP (EOIAM or EDL).
+3. On first use of the federation:
 
-The user explicitly consents to the sharing of identity attributes on the originating side.
-The user accepts applicable terms and conditions on the receiving side.
+  * The user explicitly consents to the sharing of identity attributes on the originating side.
+  * The user accepts applicable terms and conditions on the receiving side.
 
+4. Upon successful authentication, the home IdP asserts the user’s identity and conveys the BIOMASS initiative entitlement to the partner IdP.
+5. The receiving IdP validates the assertion and maps the remote user to a local security context.
+6. The user is granted access to BIOMASS MAAP resources according to the conveyed entitlement, independent of whether the service is hosted at ESA or NASA.
 
-Upon successful authentication, the home IdP asserts the user’s identity and conveys the BIOMASS initiative entitlement to the partner IdP.
-The receiving IdP validates the assertion and maps the remote user to a local security context.
-The user is granted access to BIOMASS MAAP resources according to the conveyed entitlement, independent of whether the service is hosted at ESA or NASA.
-
-Postconditions
+#### Postconditions
 
 The user is treated as a first‑class user on the receiving infrastructure:
 
-Access control decisions are enforced locally.
-The user can create API tokens or credentials.
-The user can perform actions supported by the MAAP service according to their entitlement.
-
+* Access control decisions are enforced locally.
+* The user can create API tokens or credentials.
+* The user can perform actions supported by the MAAP service according to their entitlement.
 
 No separate user registration or account provisioning is required at the partner organization.
 
-Key Properties
+#### Key Properties
 
-Bilateral federation with mutual recognition of identities.
-Cross‑organization entitlement propagation.
-Explicit user consent and legal acceptance at first use.
-Operational equivalence between local and federated users.
+* Bilateral federation with mutual recognition of identities.
+* Cross‑organization entitlement propagation.
+* Explicit user consent and legal acceptance at first use.
+* Operational equivalence between local and federated users.
 
+```mermaid
+sequenceDiagram
+    title Bilateral Delegated Authentication and Entitlement Propagation (BIOMASS MAAP)
 
+    actor User
+    participant HomeIdP as Home IdP (EOIAM or EDL)
+    participant PartnerIdP as Partner IdP (EDL or EOIAM)
+    participant MAAP as BIOMASS MAAP Service
+
+    User->>MAAP: Access MAAP resource
+    MAAP->>User: Redirect to authenticate
+
+    User->>HomeIdP: Authenticate
+    HomeIdP-->>User: Authentication successful
+
+    alt First federation use
+        HomeIdP->>User: Request consent for attribute sharing
+        User-->>HomeIdP: Consent granted
+    end
+
+    HomeIdP->>PartnerIdP: Assert identity + BIOMASS entitlement
+
+    alt First access at partner
+        PartnerIdP->>User: Present Terms & Conditions
+        User-->>PartnerIdP: Accept T&Cs
+    end
+
+    PartnerIdP->>PartnerIdP: Map to local user context
+    PartnerIdP->>MAAP: Authorize request
+    MAAP-->>User: Access granted
+    Note over User,MAAP: Federated users are treated as local users.<br/>Authorization and API access are enforced locally.
+  
+```
 ## NASA Use Case (WGISS-59) 
 
 ## DestinE 
