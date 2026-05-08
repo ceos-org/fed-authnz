@@ -1,0 +1,22 @@
+
+sequenceDiagram
+    title Delegated Authentication via Federated Identity Provider
+
+    actor User
+    participant SP as Service / Platform
+    participant HomeIdP as Home Identity Provider
+    participant IAM as Local IAM (Broker)
+
+    User->>SP: Access protected platform
+    SP->>IAM: Authentication required
+
+    IAM->>HomeIdP: Redirect for delegated authentication
+    HomeIdP->>User: Authenticate user
+
+    User-->>HomeIdP: Credentials / MFA
+    HomeIdP-->>IAM: Authentication assertion
+
+    IAM->>IAM: Validate assertion\nMap to local identity
+    IAM-->>SP: Authentication result
+
+    SP-->>User: Access granted

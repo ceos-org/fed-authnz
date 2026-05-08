@@ -1,0 +1,23 @@
+
+sequenceDiagram
+    title OpenID Connect Authorization Code Flow
+
+    actor User
+    participant Client as Client Application (RP)
+    participant OP as OpenID Provider
+    participant RS as Resource Server
+
+    User->>Client: Initiates login or protected action
+    Client->>OP: Redirect to authorization endpoint (OIDC request)
+    OP->>User: Authenticate user and request consent
+
+    User-->>OP: Authentication + consent approval
+    OP-->>Client: Authorization code
+
+    Client->>OP: Exchange code for tokens
+    OP-->>Client: ID token + access token
+
+    Client->>Client: Validate ID token (issuer, signature, claims)
+
+    Client->>RS: Request resource with access token
+    RS-->>Client: Protected resource
