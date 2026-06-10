@@ -42,7 +42,7 @@ Federated identity protocols like OAuth 2.0, OpenID Connect (OIDC), and SAML are
   - **SAML**: Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups. 
 
 
-```mermaid
+```{mermaid}
 sequenceDiagram
     title OAuth 2.0 Authorization Code Flow (Simplified)
 
@@ -68,7 +68,7 @@ sequenceDiagram
 ### OpenID Connect (OIDC)
 - **OIDC**: OpenID Connect is an identity layer built on top of OAuth 2.0 to provide authentication. It allows users to log in using a third-party identity provider.
 
-```mermaid
+```{mermaid}
 sequenceDiagram
     title OpenID Connect Authorization Code Flow
 
@@ -96,7 +96,7 @@ sequenceDiagram
 ### Delegated OIDC
 - **Delegated OIDC**: This flow shows how a local broker can use a home OpenID Provider (OP) to authenticate a user and map that identity back to a local service.
 
-```mermaid
+```{mermaid}
 sequenceDiagram
     title Delegated Authentication with OpenID Connect (Federated)
 
@@ -127,7 +127,7 @@ sequenceDiagram
 ### Delegated Authentication
 - **Delegated Authentication via Federated Identity Provider**: When a user from one organization accesses a service in another, the local environment delegates authentication to the user's home Identity Provider.
 
-```mermaid
+```{mermaid}
 sequenceDiagram
     title Delegated Authentication via Federated Identity Provider
 

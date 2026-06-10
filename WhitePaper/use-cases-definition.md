@@ -96,7 +96,7 @@ registration or account provisioning at the partner organization.
 - Explicit user consent and legal acceptance at first use.
 - Operational equivalence between local and federated users.
 
-```mermaid
+```{mermaid}
 sequenceDiagram
     title BIOMASS MAAP – Bilateral Delegated Authentication and Authorization Flow
 
