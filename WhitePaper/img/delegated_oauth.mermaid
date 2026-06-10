@@ -16,7 +16,7 @@ sequenceDiagram
     User-->>HomeIdP: Credentials / MFA
     HomeIdP-->>IAM: Authentication assertion
 
-    IAM->>IAM: Validate assertion\nMap to local identity
+    IAM->>IAM: Validate assertion<br>Map to local identity
     IAM-->>SP: Authentication result
 
     SP-->>User: Access granted
