@@ -1,0 +1,25 @@
+sequenceDiagram
+    title Delegated Authentication with OpenID Connect (Federated)
+
+    actor User
+    participant RP as Receiving Platform (RP / MAAP)
+    participant Broker as Local IAM / Broker
+    participant OP as Home OpenID Provider
+
+    User->>RP: Access protected platform
+    RP->>Broker: Authentication required
+
+    Broker->>OP: Redirect (OIDC auth request)
+    OP->>User: Authenticate user
+
+    User-->>OP: Credentials / MFA
+    OP-->>Broker: Authorization code
+
+    Broker->>OP: Token request
+    OP-->>Broker: ID Token + Access Token
+
+    Broker->>Broker: Validate ID Token\n(issuer, audience, signature)
+    Broker->>Broker: Map subject → local identity
+
+    Broker-->>RP: Authentication result
+    RP-->>User: Access granted
