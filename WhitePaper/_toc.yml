@@ -8,8 +8,6 @@ chapters:
     title: "Understanding Federated Identity: Core Concepts and Protocols"
   - file: use-cases-definition
     title: "Use Cases Definition"
-  - file: centralised-vs-decentralised
-    title: "Centralised vs Decentralised"
   - file: challenges-and-solutions
     title: "Challenges and Strategic Solutions"
   - file: conclusions
