@@ -5,15 +5,18 @@ This chapter covers the fundamental concepts and protocols that underpin federat
 ## Essential Terminology
 - **Authentication (AuthN):** The process of verifying a user's identity via a set of credentials such as username and password. It answers the question: _Who are you?_
 - **Authorization (AuthZ):** The process of determining what actions or resources an authenticated user is allowed to access. It answers the question: _What are you allowed to do?_
+- **Accounting and Quota Management:** Accounting is the process of keeping track of resource consumption (e.g. number of downloads, CPU time used). Accounting is a pre-requisite for Quota Management which allows limiting or throttling resource consumption. It answers the question: _How much did I already consume of a specific ressource?_. Accounting is also a pre-requisite of Billing (if required).
 - **Federation:** A collection of organizations that agree to interoperate under a certain rule set. It answers the question: _Who vouched for you?_
+- **Identity Federation:** A collection of organizations that agree to interoperate as Identity Providers (IdP). Main purpose is to allow access to a protected service no matter what IdP is used for authentication.
+- **Data Federation:** A collection of organizations that agree to interoperate as Service Providers (SP). Main purpose is to allow access to several services. The services may require authentication via an IdP or not (e.g. open federated STAC catalogues). 
 - **Identity and Access Management (IAM)** refers to the framework of policies, processes, and technologies used to manage digital identities and control access to resources within an organization.
 IAM ensures that the right individuals and entities have the appropriate access to technology resources at the right times, for the right reasons. IAM is crucial for:
    - Enhancing security by preventing unauthorized access.
    - Supporting compliance with regulations like GDPR.
    - Improving user experience by enabling Single Sign-On (SSO) and streamlined access to resources.
-
-- **IdP versus SP**: The Identity Provider (IdP) handles authentication and generates tokens providing the user's identity. The Service Provider (SP) handles authorization, validating the tokens from the IdP, and there enforces access control based on roles or permissions.
-- **Single Sign-on (SSO):** 
+- **IdP versus SP:** The Identity Provider (IdP) handles authentication and generates tokens providing the user's identity. The Service Provider (SP) handles authorization, validating the tokens from the IdP, and there enforces access control based on roles or permissions.
+- **Single Sign-on (SSO):** SSO is an authentication scheme that allows a user to log in with a single ID to any of several related, yet independent, software systems within an organization. True single sign-on allows the user to log in once and access services without re-entering authentication factors.
+- **Single Logout (SLO):**  SLO, as counterpart to SSO, is the mechanism by which a user is able to sign-out (logout) of all of the applications they signed into with single sign-on (SSO) including the identity provider.
 
 ## User Access Process
 1. User Authentication: The user verifies their identity, typically via an Identity Provider (IdP), to initiate access. This step is crucial in federated systems where authentication is delegated across domains.
@@ -153,6 +156,52 @@ sequenceDiagram
 ```
 
   - **SAML**: Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups.
+
+## Types of Federation (or: Federation Taxonomy?)
+<mark>Note</mark> _[UR]_ initial content/structure for this new section. Just a proposal, please add/update/comment.
+
+### Overview
+_Federating something_ means making a resource or asset inside an organization accessible to one or more other organizations.
+An organization may federate different types or resources or assets: Identities, Services, Data, Catalogues etc. (see section _Federation Types: Type of federated Ressources_ below).
+
+Federations vary extremely in size: from 1:1 bilateral federations with two participants up to n:m (IdP:SP) open federations with a varying and sometimes very high number of participants (example: eduGAIN).
+
+The type of information exchanged between participants in a federation also has legal and compliance implications. If personal data of users is transferred between participants of a federation data protection requirements must be met. Depending on the type of data exchanged, additional legal requirements may apply, too (e.g. export control law).
+
+
+
+### Federation Types: Type of federated Ressources
+
+Identities, Data, Catalogues, ...
+
+### Federation Types: Federation Size / Number and organizational structure of Participants
+
+Identity Federation = cross-organizational version of SSO
+
+from 1:1 to n:m 
+
+### Federation Types: Geolocation of Participants, national / international Federations
+
+inside a single jurisdiction vs. cross-jurisdictional
+
+### Federation Types: closed versus open Federations
+
+bilateral, trilateral, ... - fixed number of participants. allows to establish a federation contract between participants to define federation details, responsibilities, ...
+
+open Federations: e.g. national research Identity Federations, eduGAIN: participating IdPs and SPs changes over time
+contract between all participants is not feasible
+-> Solution: 
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 Used and useful references: 
