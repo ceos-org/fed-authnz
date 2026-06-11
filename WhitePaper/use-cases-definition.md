@@ -187,13 +187,24 @@ The following use cases (UC) are considered:
 
 Some example data from free and open datasets have been selected to be hosted in repositories on both ESA and DLR side. This example data is also made available and discoverable in ESA and DLR STAC catalogues (see picture below).
 
-<mark>Note</mark> _[UR]_ to be inserted: simplified graphic depicting the DLR and ESA STAC catalogues (similar to slide 7 of the Bilateral PPT)
+
+```{image} img/ESA DLR Demonstrator STAC.png
+:alt: ESA DLR Demonstrator Federated STAC catalogues
+:width: 90%
+:class: image-spaced
+```
+
 
 On ESA and DLR side an Identity and Access Management (IAM) system manages digital identities (accounts) of ESA and DLR users, respectively.
 Both IAM act as Service Provider for the ESA / DLR service that hosts the restrained datasets (the ESA IAM protects the ESA repository, the ESA IAM protects the DLR repository).
 As Identity Providers, both ESA and DLR IAM are configured to form a ESA/DLR Demonstrator Identity Federation.
 
-<mark>Note</mark> _[UR]_ to be inserted: simplified graphic depicting the DLR and ESA demonstrator components (similar to slide 18 of the Bilateral PPT)
+
+```{image} img/ESA DLR Demonstrator Building Blocks.png
+:alt: ESA DLR Demonstrator Building Blocks: Federated Identity Providers, federated services.png
+:width: 90%
+:class: image-spaced
+```
 
 This allows ESA users to use their ESA accounts to access data hosted in the DLR repository (and vice versa):
 - an ESA user finds restrained data of interest hosted in the DLR repository using the federated discovery functionality
@@ -206,7 +217,7 @@ This allows ESA users to use their ESA accounts to access data hosted in the DLR
 
 ## eduGAIN
 ### Overview
-eduGAIN is a global meta-federation that interconnects national research and education identity federations worldwide. It enables students and researchers to access international digital services using their home institution credentials through single sign-on. By establishing a common trust framework and technical standards, the system ensures secure interoperability between participating organizations across different countries. This infrastructure eliminates the need for separate accounts, significantly simplifying collaboration for the global academic community. Operated by GÉANT, the platform empowers international research cooperation by standardizing identity management and facilitating seamless access to shared resources.
+eduGAIN is a global meta-federation that interconnects national research and education identity federations worldwide {cite}`eduGAIN`. It enables students and researchers to access international digital services using their home institution credentials through single sign-on. By establishing a common trust framework and technical standards, the system ensures secure interoperability between participating organizations across different countries. This infrastructure eliminates the need for separate accounts, significantly simplifying collaboration for the global academic community. Operated by GÉANT, the platform empowers international research cooperation by standardizing identity management and facilitating seamless access to shared resources.
 
 ### Participation
 Participation in eduGAIN is possible both as Service Provider (SP) or Identity Provider (IdP), but not directly. As a meta-federation, eduGAIN is a federation of national identity federations (e.g. _Canadian Access Federation_ (Canada), _Canadian Access Federation_ (France), _IDEM_ (Italy) or DFN-AAI (Germany); for a list of participating national federations see https://reporting.edugain.org/federation_list.php).
@@ -218,16 +229,12 @@ To participate as a Service Provider, your organization cannot join eduGAIN dire
 To participate as an Identity Provider, your organization must first join your national or regional research and education federation, as direct membership in eduGAIN is not available. Contact your national federation's support team to register your identity system and agree to their participation policies. You will need to ensure your technical infrastructure complies with SAML standards and eduGAIN's attribute release requirements. Once your national federation validates your configuration and legal agreements, they will publish your metadata to the eduGAIN meta-federation. This process enables users from other participating countries to authenticate using your institution's credentials. Ultimately, this expands your institution's reach by allowing global researchers to access your resources securely.
 
 ### AARC Blueprint Architecture
-The AARC Blueprint Architecture establishes a comprehensive reference model for identity and access management within the research and education sector. It defines the technical and policy standards necessary to achieve seamless interoperability between distinct identity federations. Serving as the foundation for eduGAIN, this blueprint ensures that participating national federations can trust and exchange identity data securely across borders. The architecture specifies critical protocols and attribute release policies that govern how users authenticate and access remote services. This standardization allows researchers to maintain a consistent digital identity regardless of their specific location or institution. Consequently, the AARC Blueprint acts as the essential technical backbone that sustains the global connectivity and trust model of eduGAIN.
+The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive reference model for identity and access management within the research and education sector. It defines the technical and policy standards necessary to achieve seamless interoperability between distinct identity federations. Serving as the foundation for eduGAIN, this blueprint ensures that participating national federations can trust and exchange identity data securely across borders. The architecture specifies critical protocols and attribute release policies that govern how users authenticate and access remote services. This standardization allows researchers to maintain a consistent digital identity regardless of their specific location or institution. Consequently, the AARC Blueprint acts as the essential technical backbone that sustains the global connectivity and trust model of eduGAIN.
 
-The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics.
+The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
 
 ### References
-<mark>Note</mark> _[UR]: will be converted to bibtex references_
-[Reference 1](https://)
-[eduGAIN Hompage](https://edugain.org/)
-[AARC Blueprint Architecture](https://aarc-community.org/))
-[AARC Guidelines](https://aarc-project.eu/guidelines/)
+<mark>Note</mark> _[UR]: references are now converted to bibtex entries. If citing works this section will be removed_
 
 
 ## EOEPCA+ - Earth Observation Exploitation Common Architecture
