@@ -188,7 +188,7 @@ The following use cases (UC) are considered:
 Some example data from free and open datasets have been selected to be hosted in repositories on both ESA and DLR side. This example data is also made available and discoverable in ESA and DLR STAC catalogues (see picture below).
 
 
-```{image} img/ESA DLR Demonstrator STAC.png
+```{image} img/ESA_DLR_Demonstrator_STAC.png
 :alt: ESA DLR Demonstrator Federated STAC catalogues
 :width: 90%
 :class: image-spaced
@@ -200,7 +200,7 @@ Both IAM act as Service Provider for the ESA / DLR service that hosts the restra
 As Identity Providers, both ESA and DLR IAM are configured to form a ESA/DLR Demonstrator Identity Federation.
 
 
-```{image} img/ESA DLR Demonstrator Building Blocks.png
+```{image} img/ESA_DLR_Demonstrator_Building_Blocks.png
 :alt: ESA DLR Demonstrator Building Blocks: Federated Identity Providers, federated services.png
 :width: 90%
 :class: image-spaced
