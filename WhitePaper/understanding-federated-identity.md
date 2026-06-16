@@ -16,7 +16,7 @@ IAM ensures that the right individuals and entities have the appropriate access 
    - Improving user experience by enabling Single Sign-On (SSO) and streamlined access to resources.
 - **IdP versus SP:** The Identity Provider (IdP) handles authentication and generates tokens providing the user's identity. The Service Provider (SP) handles authorization, validating the tokens from the IdP, and there enforces access control based on roles or permissions.
 - **Policy Decision Point (PDP):** In the authorization context, the PDP is the decision engine that decides on the basis of applicable policies and relevant information (user attributes, etc.) if access can be granted or not.
-- **Policy Enforcement (PEP):** In the authorization context, the PEP is the gatekeeper that enforces the decision of the PDP. Typically the PEP resides at the SP.
+- **Policy Enforcement Point (PEP):** In the authorization context, the PEP is the gatekeeper that enforces the decision of the PDP. Typically the PEP resides at the SP.
 - **Policy Information Point (PIP):** In the authorization context, the PIP is the service where the PDP can request additional information required to decide an authorization request.
 - **Single Sign-on (SSO):** SSO is an authentication scheme that allows a user to log in with a single ID to any of several related, yet independent, software systems within an organization. True single sign-on allows the user to log in once and access services without re-entering authentication factors.
 - **Single Logout (SLO):**  SLO, as counterpart to SSO, is the mechanism by which a user is able to sign-out (logout) of all of the applications they signed into with single sign-on (SSO) including the identity provider.
