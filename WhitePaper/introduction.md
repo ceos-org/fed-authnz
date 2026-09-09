@@ -53,7 +53,7 @@ The intended audience includes CEOS agencies and partners, EO data and service p
 By bringing these perspectives together, the White Paper aims to support a practical path from isolated authentication systems towards trusted, interoperable access to distributed EO data and services—while preserving the autonomy and policy responsibilities of each participating organisation.
 
 
-## Where are we now? what should the future hold? 
+## 1.4 Where are we now? what should the future hold? 
 Earth Observation (EO) missions produce vast amounts of data, supporting a wide range of stakeholders—including scientists, developers, and decision-makers worldwide. These stakeholders come from diverse institutions such as research centers, government agencies, and commercial organizations, each requiring access to different datasets and services.
 
 EO data usage is often not centered around a specific mission, but rather around an application that benefits from sourcing any type of EO data that supports its purpose. The most user-centric approach would allow users to access as much data as possible from their home institution. In reality, however, the diversity of EO missions results in different data collections spread across platforms and agencies, leading to complex authorization scenarios and fragmented access control. Currently, authorization is handled locally by the data's host, often based on varying attributes. These differences can stem from political decisions—for example, European Commission (Copernicus Programme) versus ESA policies (EO Science missions), or GDPR versus U.S. data governance frameworks.
