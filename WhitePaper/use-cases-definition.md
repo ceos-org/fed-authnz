@@ -1,21 +1,21 @@
-# Use Cases Definition
+# 3. Use Cases Definition
 
 This chapter defines the specific use cases for federated authentication and authorization in Earth Observation systems.
 
 
-## ESA/NASA MAAP
+## 3.1 ESA/NASA MAAP
 
-### Motivation and Scope
+### 3.1.1 Motivation and Scope
 
 The ESA–NASA Multi‑Mission Algorithm and Analysis Platform (MAAP) is a jointly developed initiative comprising two independently operated but interoperable cloud‑based platforms. While operated under separate organizational governance, the ESA and NASA MAAPs share a common architectural vision, interoperability standards, and mission objectives, supporting missions such as BIOMASS, NISAR, and GEDI.
 
-### User‑Centric Goals of MAAP Federation
+### 3.1.2 User‑Centric Goals of MAAP Federation
 
 *\[SMB\] The MAAP federation architecture is evolving; the level of technical detail presented here focuses on conceptual goals and intended capabilities rather than a finalized operational architecture.*
 
 The goal of federation between the ESA and NASA MAAP platforms is to reduce friction for cross‑platform scientific workflows while preserving platform autonomy. Practically, this means (1) accepting authentication performed by a user's home Identity Provider (IdP) and (2) enforcing authorization locally at the hosting MAAP, potentially using entitlement/attribute information that originates from the user's home side. This avoids a centralised identity or access‑control service while still enabling controlled access to protected resources.
 
-### Value‑Adding Cross‑Platform Use Cases
+### 3.1.3 Value‑Adding Cross‑Platform Use Cases
 
 The use cases below are included only to motivate authn/authz requirements (federated identity recognition, entitlement‑aware authorization, and auditability). They are not intended as a complete MAAP feature overview.
 
@@ -31,7 +31,7 @@ The joint MAAP architecture enables users to deploy and execute processing workf
 
 This approach supports execution of the same processor across different datasets and enables users to retrieve and compare the outputs from both platforms to validate consistency.
 
-### Federation as the Enabling Mechanism
+### 3.1.4 Federation as the Enabling Mechanism
 
 The cross‑platform use cases above rely on an established federation that allows the hosting MAAP to accept authentication performed by the user's home IdP and to bind it to a local session. The hosting MAAP then makes authorization decisions under local governance, potentially using entitlement information originating from the home side.
 
@@ -138,7 +138,7 @@ sequenceDiagram
     P_MAAP-->>User: Access granted according to entitlement
 ```
 
-### Extensions and Background
+### 3.1.5 Extensions and Background
 
 #### Platform‑to‑Platform Federation (API‑Level)
 
@@ -164,16 +164,14 @@ Beyond interactive user access, the ESA and NASA MAAP platforms may also establi
 
 [ESA MAAP (BIOMASS)](https://portal.maap.eo.esa.int/biomass/)
 
-## NASA Use Case (TBC) 
-
-## DestinE (TBC)
+## 3.2 DestinE (TBC)
 DestinE has two federated solutions in place: 
 1. Federated Identity Provider: A federated IdP generates client credentials which are passed to the DESP Admin. They configure client credentials and specific settings. The DESP login panel then shows the added IdP IAM. Federated IdPs can login into the DestinE platform without needing to create a DESP account. 
 2. Federated Services: Similiar to the federated IdP, federated services generate client credentials which are passed to the Fed. Service Admin who configures client credentials and specific settings. These are then passed to the federated service login panel which shows the DESP IAM as an IdP. Examples of these services are SesamEO and other data access services of the platform like Eden, DCMS, HDA, etc. A dedicated DestinE-IAM Documentation is provided to SPs when performing the onboarding.
 
 [DestinE Platform Onboarding Policy and Process v2.6](https://platform.destine.eu/wp-content/uploads/2024/11/DEST-SRCO-PR-2300339-Onboarding-Policy-and-Process-v2.6.pdf)
 
-## Bilateral ESA-DLR Demonstrator
+## 3.3 Bilateral ESA-DLR Demonstrator
 The bilateral ESA-DLR Demonstrator activity focuses on use cases regarding _Federated Discovery_ and _Federated Access_:
 - _Federated Discovery_ refers to the ability to search for and discover data across several repositories hosted by different organizations in a unified way;
 - _Federated Access_ refers to the ability to retrieve data using the digital identity (credentials) of the home organization no matter what organization participating in the identity federation is hosting the data.
@@ -221,11 +219,11 @@ This allows ESA users to use their ESA accounts to access data hosted in the DLR
 - the DLR IAM trusts the ESA IAM authentication token, generates a local authentication token and submits it to the DLR repository
 - the DLR repository detects that the ESA user is authenticated, checks the authorization information contained in the token, and if authorized provides access to the restrained data.
 
-## eduGAIN
-### Overview
+## 3.4 eduGAIN
+### 3.4.1 Overview
 eduGAIN is a global meta-federation that interconnects national research and education identity federations worldwide {cite}`eduGAIN`. It enables students and researchers to access international digital services using their home institution credentials through single sign-on. By establishing a common trust framework and technical standards, the system ensures secure interoperability between participating organizations across different countries. This infrastructure eliminates the need for separate accounts, significantly simplifying collaboration for the global academic community. Operated by GÉANT, the platform empowers international research cooperation by standardizing identity management and facilitating seamless access to shared resources.
 
-### Participation
+### 3.4.2 Participation
 Participation in eduGAIN is possible both as Service Provider (SP) or Identity Provider (IdP), but not directly. As a meta-federation, eduGAIN is a federation of national identity federations (e.g. _Canadian Access Federation_ (Canada), _Canadian Access Federation_ (France), _IDEM_ (Italy) or DFN-AAI (Germany); for a list of participating national federations see https://reporting.edugain.org/federation_list.php).
 
 #### Participation as Service Provider
@@ -234,7 +232,7 @@ To participate as a Service Provider, your organization cannot join eduGAIN dire
 #### Participation as Identity Provider
 To participate as an Identity Provider, your organization must first join your national or regional research and education federation, as direct membership in eduGAIN is not available. Contact your national federation's support team to register your identity system and agree to their participation policies. You will need to ensure your technical infrastructure complies with SAML standards and eduGAIN's attribute release requirements. Once your national federation validates your configuration and legal agreements, they will publish your metadata to the eduGAIN meta-federation. This process enables users from other participating countries to authenticate using your institution's credentials. Ultimately, this expands your institution's reach by allowing global researchers to access your resources securely.
 
-### AARC Blueprint Architecture
+### 3.4.3 AARC Blueprint Architecture
 The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive reference model for identity and access management within the research and education sector. It defines the technical and policy standards necessary to achieve seamless interoperability between distinct identity federations. Serving as the foundation for eduGAIN, this blueprint ensures that participating national federations can trust and exchange identity data securely across borders. The architecture specifies critical protocols and attribute release policies that govern how users authenticate and access remote services. This standardization allows researchers to maintain a consistent digital identity regardless of their specific location or institution. Consequently, the AARC Blueprint acts as the essential technical backbone that sustains the global connectivity and trust model of eduGAIN.
 
 The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
@@ -243,7 +241,7 @@ The AARC Blueprint Architecture also serves as a rich source of Information, Gui
 <mark>Note</mark> _[UR]: references are now converted to bibtex entries. If citing works this section will be removed_
 
 
-## EOEPCA+ - Earth Observation Exploitation Common Architecture
+## 3.5 EOEPCA+ - Earth Observation Exploitation Common Architecture
 
 Cloud-based platforms have proven to be an essential cornerstone for a paradigm shift in Earth Observation (EO), suitable to allow science and application initiatives to efficiently manage the huge volume of data availability in a “bring-the-user-to-the-data” paradigm. This paradigm has been demonstrated to be a critical enabler of innovation and acceleration, which in the European context needs to leverage a fragmented cloud and platform ecosystem, developed with a multitude of industrial and public investments at European and National level.
 
@@ -259,11 +257,11 @@ The EOEPCA+ architecture is supported by a Reference Implementation that helps t
 
 A key aspect of the EOEPCA+ architecture is the definition of a common authentication and authorization framework that allows users to access and use the data and services across the different platforms and clouds, while also allowing them to share their data, code, and project results with the community on cloud-based environments. This is expressed through the IAM Building Block that encapsulates the approach and provides a reusable reference implementation.
 
-### EOEPCA+ Use Cases - Introduction
+### 3.5.1 EOEPCA+ Use Cases - Introduction
 
 As a common reference architecture, that is not tied to any concrete platform, EOEPCA+ offers here generic use cases for Federated Authentication and Authorization, that can be used as a reference for other platforms that want to implement similar capabilities. These use cases are defined in the context of the EOEPCA+ architecture, but they are not limited to it, and they can be adapted and implemented in other contexts as well.
 
-### EOEPCA+ Use Cases - Abstract Platform Federation
+### 3.5.2 EOEPCA+ Use Cases - Abstract Platform Federation
 
 This use case describes a generic scenario of platform federation, where a user can access and use data and services across multiple platforms, without needing to log in separately to each platform. The key aspects of this use case are:
 
@@ -281,14 +279,14 @@ This use case describes a generic scenario of platform federation, where a user 
 
 * Tokens are either accepted cross-platform, or are otherwise exchanged/transformed for consumption at the 'other' platform - with possible scope reduction
 
-## SSI Decentralised
+## 3.6 SSI Decentralised
 <img width="1440" height="317" alt="image" src="https://github.com/user-attachments/assets/258fc2a4-4732-4a58-bb26-8918c423b8c7" />
 
 **S**elf-**S**overeign **I**dentity (SSI) is an approach to digital identity that gives individuals control over the information they use to prove who they are to websites, services, and applications across the web. 
 
 [Self-sovereign identity Wikipedia](https://en.wikipedia.org/wiki/Self-sovereign_identity)
 
-### COVID-19 vaccination in Japan
+### 3.6.1 COVID-19 vaccination in Japan
 
 Digital Agency in Japan released an application for [“Certificate of COVID-19 Vaccination”](https://www.digital.go.jp/en/policies/vaccinecert) in 2021.  
 It is an implementation by using VCs, and it took standards “SMART Health Card(SHC)”.  
@@ -296,7 +294,7 @@ SHC is developed by “Vaccination Credential Initiative(VCI), and it is discuss
 
 <img width="4402" height="1339" alt="COVID-19app" src="https://github.com/user-attachments/assets/a47fa2c7-6d08-4abe-8b94-66370b60e10c" />
 
-### Community service wallet
+### 3.6.2 Community service wallet
 
 **Toyonon Wallet** is an application for community service wallet inspired by the official mascot character of Toyono Town in Osaka, Japan, created to promote the town's community activities and local charm.
 
@@ -311,7 +309,7 @@ Reference: [japanese](https://digitalplatformer.co.jp/220607002/)
 Reference: [platform](https://digitalplatformer.co.jp/en/20250312_01/)
 
 
-### Japan’s Academic VC Pilots
+### 3.6.3 Japan’s Academic VC Pilots
 
 Japan is actively advancing the practical adoption of Verifiable Credentials (VC) and Decentralized Identifiers (DID) within higher education to modernize academic credentialing and identity verification. Two prominent initiatives demonstrate this trend:
 
@@ -350,13 +348,13 @@ TBD
 
 
 
-## Integrity Provenance and Trust
+## 3.7 Integrity Provenance and Trust
 
 
 The OGC Testbed-20 and OGC Testbed-21 activities included specific tasks related to Integrity, Provenance and Trust (IPT).
 The Engineering Report OGC 24-033 {cite}`OGC_24-033` presents a number of IPT use cases that were explored and prototyped during the Testbed-20 activities. The objective was to propose new IPT building blocks that are aligned with existing OGC building blocks (API) and adhere to FAIR principles.  
 
-### Decentralized identifiers
+### 3.7.1 Decentralized identifiers
 
 The W3C DID specification {cite}`W3C_DID` defines Decentralized identifiers (DIDs) as a new type of identifiers that enable verifiable, decentralized digital identity. A DID refers to any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) as determined by the controller of the DID. In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. 
 
@@ -371,7 +369,7 @@ In the `EO data supply chain` scenario of the Testbed-20 IPT activities, Decentr
 
 The objective of this IPT scenario was to allow downstream EO data consumers, for example a third-party 'Watermarking' process, to “trust” the data, i.e., allow verification that data consumed is from the original data provider and allow verification of the integrity of the data.
 
-### Verifiable credentials
+### 3.7.2 Verifiable credentials
 
 In addition, EO resources were described with W3C Verifiable Credentials and Verifiable Presentations.   Verifiable Credentials are a novel way to express information as metadata, claims and proofs (signatures).  The Verifiable Credentials and Presentations are cryptographically verifiable using key information related to the DID identifying the holder and/or issuer.  In the described scenario, the `claims` correspond to EO product metadata properties, i.e. JSON(-LD) encoded EO product metadata.
 
@@ -436,7 +434,7 @@ For examples of the various artifacts, we refer to both Engineering Reports:
 - [W3C Verifiable Credential](https://docs.ogc.org/per/24-033.html#_w3c_verifiable_credentials_example)
 - [W3C Verifiable Presentation](https://docs.ogc.org/per/24-033.html#_w3c_verifiable_presentations_example)
 
-### Additional topics
+### 3.7.3 Additional topics
 
 Other Self-Sovereign Identity (SSI) aspects with W3C compliant VC/VP were identified as future work in the Engineering Report OGC 24-033 {cite}`OGC_24-033`:
 
@@ -444,13 +442,11 @@ Other Self-Sovereign Identity (SSI) aspects with W3C compliant VC/VP were identi
 - Decentralized Identifiers for individuals (“natural persons”), recorded in a “wallet.” In Testbed 20, EO use cases were limited to “legal persons” (DID recorded in a Registry instead of a wallet).
 - Support for privacy and confidentiality via “Selective disclosure” (i.e., ability of a holder to decide what information to share, VC formatted according to a verifier’s data schema).
 
-## Use Case Summary Table
+## 3.8 Use Case Summary Table
 
 | Use Case Example    | Key Technologies Applied | AuthN |AuthZ | Objectives |PoC|
 | -------- | ------- | ------- |------- |------- |------- |
 |    ESA/NASA MAAP     |     |  |    |   Cross-platform data retrieval, analysis, processor deployment and execution. Federated IdPs.  |   |
-|    JAXA/ESA MAAP  |      |     |     |     |   |
-|    NASA Use CASE (WGISS-59)  |      |     |     |     |   |
 |    DestinE  |   |    |    |  Federated IdP, Federated services.  |   |
 |    Bilateral ESA-DLR  |  identity federation | yes | yes |    | Demonstrator for federated discovery / federated access use cases |
 |    eduGAIN  | applied AARC Blueprint Architecture | yes | yes | International Meta-Federation of national Identity Federations |   |
