@@ -41,7 +41,7 @@ The cross‑platform use cases above rely on an established federation that allo
 
 This use case instantiates the pattern ("authenticate at home, authorize locally") for BIOMASS: the home organization authenticates the user and is authoritative for certain entitlements, while the hosting MAAP enforces authorization and auditing under local governance.
 
-##### Context
+**Context**
 
 The BIOMASS mission benefits from close collaboration between ESA and NASA partner infrastructures. A user may request BIOMASS resources hosted by either organization while authenticating with their home IdP.
 
@@ -50,7 +50,7 @@ home side and are made available to the hosting MAAP through a federated mechani
 
 Authorization is enforced by the hosting MAAP and may incorporate entitlement information obtained from the home side; authentication assertions alone are not assumed to be sufficient for authorization.
 
-##### Actors
+**Actors**
 
 - End User
 - Home Identity Provider
@@ -59,14 +59,14 @@ Authorization is enforced by the hosting MAAP and may incorporate entitlement in
     - Home BIOMASS MAAP
     - Hosting BIOMASS MAAP
 
-##### Preconditions
+**Preconditions**
 
 - The user holds an account at their home organization (ESA EOIAM or NASA EDL).
 - The user has been granted the BIOMASS initiative entitlement at their home organization.
 - A bilateral trust relationship exists between ESA EOIAM and NASA EDL.
 - Federated entitlement exchange between peered MAAPs has been established.
 
-##### Main Flow
+**Main Flow**
 
 1. The user requests access to a protected BIOMASS resource hosted by the partner MAAP.
 2. The hosting MAAP redirects the user to authenticate with their home IdP.
@@ -80,7 +80,7 @@ Authorization is enforced by the hosting MAAP and may incorporate entitlement in
 for attribute release on the home side and acceptance of terms and
 conditions on the hosting side; exact handling is policy‑driven.
 
-##### Postconditions
+**Postconditions**
 
 - Access control is enforced by the hosting MAAP under local policy.
 - The user can obtain the credentials/tokens required by that MAAP deployment to use permitted services.
@@ -89,7 +89,7 @@ conditions on the hosting side; exact handling is policy‑driven.
 Depending on local policy, this can avoid separate manual user
 registration or account provisioning at the partner organization.
 
-##### Key Properties
+**Key Properties**
 
 - Bilateral federation with mutual recognition of identities.
 - Cross‑organization entitlement propagation.
