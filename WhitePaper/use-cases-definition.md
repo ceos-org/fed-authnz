@@ -459,5 +459,5 @@ Other Self-Sovereign Identity (SSI) aspects with W3C compliant VC/VP were identi
 |    eduGAIN  | applied AARC Blueprint Architecture | yes | yes | International Meta-Federation of national Identity Federations |   |
 |    EOEPCA+  |  |  |  |   |   |
 |    Japan SSI Decentralised  |   |    |    |    |   |
-|    Integrity Provenance and Trust  |   |    |    |    |   |
+|    Integrity Provenance and Trust  |  Self-Sovereign Identity (SSI), W3C DID {cite}`W3C_DID`, W3C VC {cite}`W3C_VC`, Distributed Ledger, Decentralised Identity Management   |  Yes  |    |  Provenance, Trust  |  OGC Testbed Demonstrators Testbed-20 and Testbed-21 |
 
