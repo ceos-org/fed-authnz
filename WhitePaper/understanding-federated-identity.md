@@ -160,7 +160,7 @@ sequenceDiagram
 
   - **SAML**: Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups.
 
-## 2.4 Types of Federation (or: Federation Taxonomy?)
+## 2.4 Federation Taxonomy
 <mark>Note</mark> _[UR]_ initial content/structure for this new section. Just a proposal, please add/update/comment.
 
 ### 2.4.1 Overview
