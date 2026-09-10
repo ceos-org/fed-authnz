@@ -291,8 +291,6 @@ Digital Agency in Japan released an application for [“Certificate of COVID-19 
 It is an implementation by using VCs, and it took standards “SMART Health Card(SHC)”.  
 SHC is developed by “Vaccination Credential Initiative(VCI), and it is discussed by Microsoft, Amazon Web Service, Oracle and so on.  
 
-<img width="4402" height="1339" alt="COVID-19app" src="https://github.com/user-attachments/assets/a47fa2c7-6d08-4abe-8b94-66370b60e10c" />
-
 ```{image} img/ssi_jaxa.png
 :alt: SSI1
 :width: 90%
@@ -307,8 +305,6 @@ Toyonon wallet stores
 - DID（Decentralized Identifier）
 - Verifiable Credentials（VC）
 - Digital coupon / voucher
-
-<img width="1024" height="403" alt="image" src="https://github.com/user-attachments/assets/9cdb4cf8-fd81-48e0-a0d1-edc79d6503d6" />
 
 ```{image} img/ssi_jaxa2.png
 :alt: SSI2
