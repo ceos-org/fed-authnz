@@ -149,13 +149,13 @@ Beyond interactive user access, the ESA and NASA MAAP platforms may also establi
 [ESA MAAP (BIOMASS)](https://portal.maap.eo.esa.int/biomass/)
 
 ```{image} img/esa-nasa-maap-earthdata-1.png
-:alt: ESA MAAP
+:alt: ESAMAAP
 :width: 90%
 :class: image-spaced
 ```
 
 ```{image} img/esa-nasa-maap-earthdata-2.png
-:alt: NASA MAAP
+:alt: NASAMAAP2
 :width: 90%
 :class: image-spaced
 ```
@@ -280,7 +280,6 @@ This use case describes a generic scenario of platform federation, where a user 
 * Tokens are either accepted cross-platform, or are otherwise exchanged/transformed for consumption at the 'other' platform - with possible scope reduction
 
 ## 3.6 SSI Decentralised
-<img width="1440" height="317" alt="image" src="https://github.com/user-attachments/assets/258fc2a4-4732-4a58-bb26-8918c423b8c7" />
 
 **S**elf-**S**overeign **I**dentity (SSI) is an approach to digital identity that gives individuals control over the information they use to prove who they are to websites, services, and applications across the web. 
 
@@ -292,7 +291,11 @@ Digital Agency in Japan released an application for [“Certificate of COVID-19 
 It is an implementation by using VCs, and it took standards “SMART Health Card(SHC)”.  
 SHC is developed by “Vaccination Credential Initiative(VCI), and it is discussed by Microsoft, Amazon Web Service, Oracle and so on.  
 
-<img width="4402" height="1339" alt="COVID-19app" src="https://github.com/user-attachments/assets/a47fa2c7-6d08-4abe-8b94-66370b60e10c" />
+```{image} img/ssi_jaxa.png
+:alt: SSI1
+:width: 90%
+:class: image-spaced
+```
 
 ### 3.6.2 Community service wallet
 
@@ -303,7 +306,11 @@ Toyonon wallet stores
 - Verifiable Credentials（VC）
 - Digital coupon / voucher
 
-<img width="1024" height="403" alt="image" src="https://github.com/user-attachments/assets/9cdb4cf8-fd81-48e0-a0d1-edc79d6503d6" />
+```{image} img/ssi_jaxa2.png
+:alt: SSI2
+:width: 90%
+:class: image-spaced
+```
 
 Reference: [japanese](https://digitalplatformer.co.jp/220607002/)  
 Reference: [platform](https://digitalplatformer.co.jp/en/20250312_01/)
