@@ -58,6 +58,27 @@ When several EO services share an IAM component, identity linking can be handled
 Federation enables authentication through an external Identity Provider; it does not automatically synchronize the full lifecycle of local accounts and permissions.
 
 ## Policy, Legal and Compliance Considerations
+### Federation Onboarding and Operational Governance
+Connecting a service to an established identity federation involves organizational as well as technical work. 
+Responsibilities have to be defined for service registration, metadata, security contacts, configuration, and ongoing operation.
+
+Access to eduGAIN for a Service Provider is typically established through a participating national federation. 
+The exact onboarding process and integration services available to Service Providers depend on the respective federation.
+
+For the EOEPCA+ integration with DFN-AAI, current activities include organizational preparation, service registration, definition of the required attributes, and preparation for interfederation testing. 
+Documenting these steps together with the technical configuration will provide a practical reference for similar EO integrations.
+
+### Data Protection Considerations for Federated EO Services
+Federated EO services receive identity information from external institutions and may involve organizations operating in different jurisdictions. 
+Service operators need to identify which personal data is required for authentication, identity linking, and authorization, and how this data is processed and retained.
+
+Identity brokers and protocol proxies add further components to the authentication flow and may also involve additional operators. 
+Their respective roles and responsibilities need to be included when assessing the processing of identity information.
+
+For a common IAM component serving several applications, attribute processing should be limited to the information required by the connected services and avoid unnecessary distribution of identity information.
+
+Data protection requirements, including those concerning international data transfers, depend on the participating organizations, jurisdictions, and actual data flows. 
+Documenting these flows and the corresponding operational responsibilities provides the basis for this assessment.
 
 ### Data Protection, Transfer of Personal Data
 <mark>Note</mark> inserted by _[UR]_, will be filled with some proposed structure and text regarding this topic
