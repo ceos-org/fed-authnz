@@ -219,29 +219,7 @@ This allows ESA users to use their ESA accounts to access data hosted in the DLR
 - the DLR IAM trusts the ESA IAM authentication token, generates a local authentication token and submits it to the DLR repository
 - the DLR repository detects that the ESA user is authenticated, checks the authorization information contained in the token, and if authorized provides access to the restrained data.
 
-## 3.4 eduGAIN
-### 3.4.1 Overview
-eduGAIN is a global meta-federation that interconnects national research and education identity federations worldwide {cite}`eduGAIN`. It enables students and researchers to access international digital services using their home institution credentials through single sign-on. By establishing a common trust framework and technical standards, the system ensures secure interoperability between participating organizations across different countries. This infrastructure eliminates the need for separate accounts, significantly simplifying collaboration for the global academic community. Operated by GÉANT, the platform empowers international research cooperation by standardizing identity management and facilitating seamless access to shared resources.
-
-### 3.4.2 Participation
-Participation in eduGAIN is possible both as Service Provider (SP) or Identity Provider (IdP), but not directly. As a meta-federation, eduGAIN is a federation of national identity federations (e.g. _Canadian Access Federation_ (Canada), _Canadian Access Federation_ (France), _IDEM_ (Italy) or DFN-AAI (Germany); for a list of participating national federations see https://reporting.edugain.org/federation_list.php).
-
-#### Participation as Service Provider
-To participate as a Service Provider, your organization cannot join eduGAIN directly but must instead register through your national research and education federation. Begin by contacting your national federation's support team to initiate the onboarding process for your specific service. You must configure your service to meet technical requirements, typically involving SAML 2.0 compliance and specific attribute release policies. Your national federation will validate your service against their policies before including it in their local metadata. Once validated, your service metadata is aggregated into the global eduGAIN metadata feed, making it visible to users worldwide. This setup allows international researchers to access your service seamlessly using their home institution credentials.
-
-#### Participation as Identity Provider
-To participate as an Identity Provider, your organization must first join your national or regional research and education federation, as direct membership in eduGAIN is not available. Contact your national federation's support team to register your identity system and agree to their participation policies. You will need to ensure your technical infrastructure complies with SAML standards and eduGAIN's attribute release requirements. Once your national federation validates your configuration and legal agreements, they will publish your metadata to the eduGAIN meta-federation. This process enables users from other participating countries to authenticate using your institution's credentials. Ultimately, this expands your institution's reach by allowing global researchers to access your resources securely.
-
-### 3.4.3 AARC Blueprint Architecture
-The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive reference model for identity and access management within the research and education sector. It defines the technical and policy standards necessary to achieve seamless interoperability between distinct identity federations. Serving as the foundation for eduGAIN, this blueprint ensures that participating national federations can trust and exchange identity data securely across borders. The architecture specifies critical protocols and attribute release policies that govern how users authenticate and access remote services. This standardization allows researchers to maintain a consistent digital identity regardless of their specific location or institution. Consequently, the AARC Blueprint acts as the essential technical backbone that sustains the global connectivity and trust model of eduGAIN.
-
-The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
-
-### References
-<mark>Note</mark> _[UR]: references are now converted to bibtex entries. If citing works this section will be removed_
-
-
-## 3.5 EOEPCA+ - Earth Observation Exploitation Common Architecture
+## 3.4 EOEPCA+ - Earth Observation Exploitation Common Architecture
 
 Cloud-based platforms have proven to be an essential cornerstone for a paradigm shift in Earth Observation (EO), suitable to allow science and application initiatives to efficiently manage the huge volume of data availability in a “bring-the-user-to-the-data” paradigm. This paradigm has been demonstrated to be a critical enabler of innovation and acceleration, which in the European context needs to leverage a fragmented cloud and platform ecosystem, developed with a multitude of industrial and public investments at European and National level.
 
@@ -257,11 +235,11 @@ The EOEPCA+ architecture is supported by a Reference Implementation that helps t
 
 A key aspect of the EOEPCA+ architecture is the definition of a common authentication and authorization framework that allows users to access and use the data and services across the different platforms and clouds, while also allowing them to share their data, code, and project results with the community on cloud-based environments. This is expressed through the IAM Building Block that encapsulates the approach and provides a reusable reference implementation.
 
-### 3.5.1 EOEPCA+ Use Cases - Introduction
+### 3.4.1 EOEPCA+ Use Cases - Introduction
 
 As a common reference architecture, that is not tied to any concrete platform, EOEPCA+ offers here generic use cases for Federated Authentication and Authorization, that can be used as a reference for other platforms that want to implement similar capabilities. These use cases are defined in the context of the EOEPCA+ architecture, but they are not limited to it, and they can be adapted and implemented in other contexts as well.
 
-### 3.5.2 EOEPCA+ Use Cases - Abstract Platform Federation
+### 3.4.2 EOEPCA+ Use Cases - Abstract Platform Federation
 
 This use case describes a generic scenario of platform federation, where a user can access and use data and services across multiple platforms, without needing to log in separately to each platform. The key aspects of this use case are:
 
@@ -278,6 +256,68 @@ This use case describes a generic scenario of platform federation, where a user 
 * Trust relationships are established amongst the federated platforms
 
 * Tokens are either accepted cross-platform, or are otherwise exchanged/transformed for consumption at the 'other' platform - with possible scope reduction
+
+## 3.5 eduGAIN
+### 3.5.1 Overview
+eduGAIN is a global meta-federation that interconnects national research and education identity federations worldwide {cite}`eduGAIN`. It enables students and researchers to access international digital services using their home institution credentials through single sign-on. By establishing a common trust framework and technical standards, the system ensures secure interoperability between participating organizations across different countries. This infrastructure eliminates the need for separate accounts, significantly simplifying collaboration for the global academic community. Operated by GÉANT, the platform empowers international research cooperation by standardizing identity management and facilitating seamless access to shared resources.
+
+#### 3.5.2 Motivation and Objective
+EO work increasingly spans many organizations, with users, datasets, and services spread across research institutes, space agencies, and other providers. A single researcher often needs to use services from multiple operators, which easily turns into multiple accounts and repeated login procedures.
+
+Most researchers already hold an institutional account issued by their home organization. If those identities can be accepted through existing research and education federations, access to EO services becomes simpler and the need for additional service-specific credentials can be reduced.
+
+This use case looks at eduGAIN as a way to offer institutional authentication for EO services, while keeping decisions about access to data, processing, and other resources in the hands of each individual service provider.
+
+### 3.5.3 Participation
+Participation in eduGAIN is possible both as Service Provider (SP) or Identity Provider (IdP), but not directly. As a meta-federation, eduGAIN is a federation of national identity federations (e.g. _Canadian Access Federation_ (Canada), _Canadian Access Federation_ (France), _IDEM_ (Italy) or DFN-AAI (Germany); for a list of participating national federations see https://reporting.edugain.org/federation_list.php).
+
+#### Participation as Service Provider
+To participate as a Service Provider, your organization cannot join eduGAIN directly but must instead register through your national research and education federation. Begin by contacting your national federation's support team to initiate the onboarding process for your specific service. You must configure your service to meet technical requirements, typically involving SAML 2.0 compliance and specific attribute release policies. Your national federation will validate your service against their policies before including it in their local metadata. Once validated, your service metadata is aggregated into the global eduGAIN metadata feed, making it visible to users worldwide. This setup allows international researchers to access your service seamlessly using their home institution credentials.
+
+#### Participation as Identity Provider
+To participate as an Identity Provider, your organization must first join your national or regional research and education federation, as direct membership in eduGAIN is not available. Contact your national federation's support team to register your identity system and agree to their participation policies. You will need to ensure your technical infrastructure complies with SAML standards and eduGAIN's attribute release requirements. Once your national federation validates your configuration and legal agreements, they will publish your metadata to the eduGAIN meta-federation. This process enables users from other participating countries to authenticate using your institution's credentials. Ultimately, this expands your institution's reach by allowing global researchers to access your resources securely.
+
+### 3.5.3 AARC Blueprint Architecture
+The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive reference model for identity and access management within the research and education sector. It defines the technical and policy standards necessary to achieve seamless interoperability between distinct identity federations. Serving as the foundation for eduGAIN, this blueprint ensures that participating national federations can trust and exchange identity data securely across borders. The architecture specifies critical protocols and attribute release policies that govern how users authenticate and access remote services. This standardization allows researchers to maintain a consistent digital identity regardless of their specific location or institution. Consequently, the AARC Blueprint acts as the essential technical backbone that sustains the global connectivity and trust model of eduGAIN.
+
+The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
+
+#### 3.4.4 EOEPCA+ and DLR Integration Scenarios
+The use case involves the EOEPCA+ Identity and Access Management (IAM) Building Block and the DLR EOC Geoservice.
+
+EOEPCA+ provides a Common Architecture and reusable Building Blocks for organizations developing or integrating EO platforms and services. The EOEPCA+ IAM Building Block provides reusable authentication and authorization capabilities for services adopting the EOEPCA+ Common Architecture.
+
+The ongoing work aims to extend the IAM Building Block with federated authentication through eduGAIN. This would allow connected EO services to use a common federation integration instead of establishing individual connections to the research and education federation infrastructure.
+
+The DLR EOC Geoservice provides a second integration scenario. Both integration scenarios involve DFN-AAI, the German research and education identity federation, as the national federation through which authentication via eduGAIN is enabled.
+
+The two activities follow different integration approaches:
+
+- **EOEPCA+ IAM Building Block:** A SP-IdP federation proxy, base on SATOSA, provides the federation-facing functionality on the Service Provider side.
+- **DLR EOC Geoservice:** An OIDC proxy provided by DFN-AAI provides access to the federation infrastructure.
+
+The main architectural difference is where protocol adaptation takes place and who operates the corresponding integration component. The implications of these approaches are discussed further in the *Challenges and Strategic Solutions* chapter.
+
+#### 3.4.4.1 Intended Authentication Scenario
+
+A researcher accessing an EO service authenticates using an existing account at their home institution.
+
+The researcher selects the home organization and is redirected to its Identity Provider. After successful authentication, the consuming IAM environment receives the identity information required to associate the federated identity with its local user context.
+
+Following successful authentication by the user's home Identity Provider, the EO environment receives a federated institutional identity through the eduGAIN federation infrastructure. Authorization to individual datasets, processing capabilities, or other protected resources remains within the respective EO environment.
+
+In an EOEPCA+-based environment, the IAM Building Block can expose this federation capability to multiple connected services.
+
+#### 3.4.4.2 Implementation Scope and Expected Contribution
+
+Work on the integration is in progress, and more implementation and interfederation testing is planned.
+
+The current scope covers both organizational and technical tasks needed for federation participation. That includes onboarding through the national federation, service registration, handling and mapping identity attributes, Identity Provider discovery, and tying the federation flow into the consuming IAM environment.
+
+A key objective is to document the end-to-end process so EO service operators can follow it as practical guidance when connecting to research and education federation infrastructure.
+
+### References
+<mark>Note</mark> _[UR]: references are now converted to bibtex entries. If citing works this section will be removed_
 
 ## 3.6 SSI Decentralised
 
