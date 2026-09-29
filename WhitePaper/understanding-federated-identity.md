@@ -28,7 +28,7 @@ Bilateral identity federation requires individual trust relationships between Id
 National research and education identity federations provide a common framework for participation and trust. 
 Interfederation connects these existing federations, allowing institutions to retain their identity infrastructure and participate through their respective national federation.
 
-eduGAIN is an established example of this model, interconnecting research and education identity federations internationally. 
+EduGAIN is an established example of this model, interconnecting research and education identity federations internationally. 
 In the EO context, services can use this infrastructure to authenticate users from participating research institutions without establishing separate identity integrations with each institution.
 
 ## 2.3 User Access Process
