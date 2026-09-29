@@ -4,9 +4,81 @@ This chapter identifies key challenges in implementing federated authentication 
 
 ## Technical Complexities and Interoperability
 
+### Protocol Interoperability and Reusable IAM Integration
+EO environments may combine services and identity infrastructures using different protocols and operational models. This includes the integration of OIDC-based services with research and education identity federations that predominantly use SAML.
+
+Implementing federation functionality separately in each service would duplicate integration and maintenance effort. Protocol adaptation can instead be handled by a shared IAM component or identity broker, while connected services continue to use their existing authentication interfaces. Operation and security of the federation connection then become responsibilities of the operator of the shared component.
+
+### Allocation of Federation Integration Responsibilities
+Federation integration can be implemented at different architectural boundaries. The chosen boundary determines who operates, maintains, and configures the protocol adaptation.
+
+The ongoing EOEPCA+ and DLR activities examine two approaches:
+
+**Service-provider-side integration:** The EOEPCA+ IAM Building Block uses a SATOSA-based federation proxy within the Service Provider's IAM environment. Federation-specific configuration and integration with local IAM capabilities remain under the control of the service operator, who also operates and maintains the proxy component.
+
+**Federation-provided integration:** The DLR EOC Geoservice uses an OIDC proxy provided by DFN-AAI. Parts of the federation-specific functionality are therefore operated by the federation provider, while the service uses an OIDC-facing integration.
+
+[Figure X: Federation Integration Approaches for the EOEPCA+ IAM Building Block and DLR EOC Geoservice]
+
+The figure illustrates these two integration scenarios, with particular emphasis on the location of protocol adaptation and the resulting operational responsibilities.
+
+### Comparison of Federation Integration Approaches
+Both approaches connect EO services to the existing federation infrastructure but differ in where federation-specific functionality is operated.
+
+With EOEPCA+, the service operator controls federation configuration, attribute processing, and integration with the local IAM environment. This supports the role of the IAM Building Block as a reusable component serving multiple connected services, but also requires the operator to maintain the proxy and the necessary federation expertise.
+
+In the DLR scenario, DFN-AAI operates the OIDC proxy and part of the federation-specific infrastructure. This reduces the functionality that has to be operated directly by the Service Provider, while making the integration dependent on the interfaces and services provided by the federation operator.
+
+Both models can coexist within an EO environment. The integration boundary depends primarily on the protocols used by the service, the federation services available, and where responsibility for operating the federation connection should reside.
+
+### Identity Provider Discovery and User Experience
+An interfederation such as eduGAIN gives users access through a large number of institutional Identity Providers. EO services therefore need a practical way for users to locate and select their home organization.
+
+A discovery service can support this selection step. Its integration also needs to account for the redirects between the EO service, federation components, and the institutional Identity Provider.
+
+When multiple applications share a single IAM component, discovery can be implemented once at the IAM layer rather than separately in every application.
+
 ## Attribute Management and Governance
+### Federated Identity Attributes and Local Authorization
+Institutional Identity Providers supply identity attributes, but the available attributes can differ between institutions and may not contain the information required to authorize access to a particular dataset, processing service, or collaborative environment.
+
+EO service operators need to define which attributes are required from the federation and how they are mapped to locally managed permissions and entitlements. Institutional affiliation alone, for example, is not sufficient to determine access to a restricted EO resource.
+
+A shared IAM component can process federated identity information centrally, while connected services apply their own authorization policies to the resources they provide.
+
+Cross-platform authorization and delegated access introduce additional requirements, especially when entitlements originate from another organization. These capabilities go beyond the authentication and federation functionality provided through eduGAIN.
+
+### Identity Linking and Lifecycle Management
+Using an institutional identity removes the need for an additional authentication credential, but EO services may still maintain local user profiles, permissions, or records of resource usage.
+
+The federated identity must be linked reliably to the corresponding local user context. Stable identifiers and defined procedures are needed to handle changes such as a user's institutional affiliation, account status, or released identity attributes.
+
+When several EO services share an IAM component, identity linking can be handled consistently at the IAM layer. Management and revocation of local permissions remain the responsibility of the respective EO environment.
+
+Federation enables authentication through an external Identity Provider; it does not automatically synchronize the full lifecycle of local accounts and permissions.
 
 ## Policy, Legal and Compliance Considerations
+### Federation Onboarding and Operational Governance
+Connecting a service to an established identity federation involves organizational as well as technical work. 
+Responsibilities have to be defined for service registration, metadata, security contacts, configuration, and ongoing operation.
+
+Access to eduGAIN for a Service Provider is typically established through a participating national federation. 
+The exact onboarding process and integration services available to Service Providers depend on the respective federation.
+
+For the EOEPCA+ integration with DFN-AAI, current activities include organizational preparation, service registration, definition of the required attributes, and preparation for interfederation testing. 
+Documenting these steps together with the technical configuration will provide a practical reference for similar EO integrations.
+
+### Data Protection Considerations for Federated EO Services
+Federated EO services receive identity information from external institutions and may involve organizations operating in different jurisdictions. 
+Service operators need to identify which personal data is required for authentication, identity linking, and authorization, and how this data is processed and retained.
+
+Identity brokers and protocol proxies add further components to the authentication flow and may also involve additional operators. 
+Their respective roles and responsibilities need to be included when assessing the processing of identity information.
+
+For a common IAM component serving several applications, attribute processing should be limited to the information required by the connected services and avoid unnecessary distribution of identity information.
+
+Data protection requirements, including those concerning international data transfers, depend on the participating organizations, jurisdictions, and actual data flows. 
+Documenting these flows and the corresponding operational responsibilities provides the basis for this assessment.
 
 ### Data Protection, Transfer of Personal Data
 <mark>Note</mark> inserted by _[UR]_, will be filled with some proposed structure and text regarding this topic
