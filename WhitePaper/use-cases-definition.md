@@ -275,6 +275,35 @@ This use case describes a generic scenario of platform federation, where a user 
 
 * Tokens are either accepted cross-platform, or are otherwise exchanged/transformed for consumption at the 'other' platform - with possible scope reduction
 
+### 3.5.3 Overview of the EOEPCA+ IAM Approach
+
+EOEPCA+ provides a framework approach to IAM that includes:
+* Authentication via OpenID Connect (OIDC)
+* Authorization via either:
+  * Keycloak via User-Managed Access (UMA)
+  * Open Policy Agent (OPA)
+* Single-sign-on (SSO) by integration of external identity providers
+
+The EOEPCA+ reference implementation showcases this approach using Keycloak as the OIDC provider, supported by APISIX Ingress Controller that acts as Policy Enforcement Point (PEP). Policy decisions are enforced based on the authorization policies defined in Keycloak and OPA.
+
+As illustrated in the following diagram, APISIX provides dedicated plugins that enforce these policies at runtime, ensuring that only authorized requests are allowed to reach the backend services - plugins: `openid-connect`, `authz-keycloak` and `opa`.
+
+```{image} img/eoepca-iam-approach.drawio.png
+:alt: EOEPCA+ IAM Approach
+:width: 80%
+:class: image-spaced
+```
+
+The authN flow establishes an access token as a JWT. The claims expressed within the JWT are then relied upon during evaluation of the authZ policy decision - for example, the user's roles/groups/permissions defined in Keycloak, or custom attributes evaluated by OPA.
+
+The EOEPCA+ reference implementation integrates with various identity provides for identity reuse and SSO, including:
+* GitHub
+* ESA EOIAM
+* eduGAIN
+* Codeberg
+
+Open Policy Agent (OPA) is deployed alongside OPAL, which synchronizes policy data from a GitHub repository to OPA.
+
 ## 3.6 SSI Decentralised
 
 **S**elf-**S**overeign **I**dentity (SSI) is an approach to digital identity that gives individuals control over the information they use to prove who they are to websites, services, and applications across the web. 
