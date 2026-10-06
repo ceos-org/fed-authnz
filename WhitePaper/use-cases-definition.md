@@ -237,10 +237,6 @@ The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive ref
 
 The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
 
-### References
-<mark>Note</mark> _[UR]: references are now converted to bibtex entries. If citing works this section will be removed_
-
-
 ## 3.5 EOEPCA+ - Earth Observation Exploitation Common Architecture
 
 Cloud-based platforms have proven to be an essential cornerstone for a paradigm shift in Earth Observation (EO), suitable to allow science and application initiatives to efficiently manage the huge volume of data availability in a “bring-the-user-to-the-data” paradigm. This paradigm has been demonstrated to be a critical enabler of innovation and acceleration, which in the European context needs to leverage a fragmented cloud and platform ecosystem, developed with a multitude of industrial and public investments at European and National level.

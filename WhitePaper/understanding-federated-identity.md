@@ -162,39 +162,61 @@ sequenceDiagram
 ```
 
 ## 2.4 Federation Taxonomy
-<mark>Note</mark> _[UR]_ initial content/structure for this new section. Just a proposal, please add/update/comment.
 
 ### 2.4.1 Overview
 _Federating something_ means making a resource or asset inside an organization accessible to one or more other organizations.
-An organization may federate different types or resources or assets: Identities, Services, Data, Catalogues etc. (see section _Federation Types: Type of federated Ressources_ below).
+An organization may federate different types of resources or assets: Identities, Services, Data, Catalogues etc. (see section _Federation Types: Type of federated Ressources_ below).
 
-Federations vary extremely in size: from 1:1 bilateral federations with two participants up to n:m (IdP:SP) open federations with a varying and sometimes very high number of participants (example: eduGAIN).
+Federations vary extremely in size: from 1:1 bilateral federations with two participants (e.g. see Use Case 3.3) up to n:m (IdP:SP) open federations with a varying and sometimes very high number of participants (example: eduGAIN, see Use Case 3.4).
 
 The type of information exchanged between participants in a federation also has legal and compliance implications. If personal data of users is transferred between participants of a federation data protection requirements must be met. Depending on the type of data exchanged, additional legal requirements may apply, too (e.g. export control law).
 
+### 2.4.2 Network of Trust and the "Federation Contract"
 
 
-### 2.4.2 Federation Types: Type of federated Ressources
 
-Identities, Data, Catalogues, ...
 
-### 2.4.3 Federation Types: Federation Size / Number and organizational structure of Participants
+### 2.4.3 Federation Types: Type of federated Ressources
 
-Identity Federation = cross-organizational version of SSO
+Catalogue federations allows to search multiple catalogues as if they were one, providing an aggregated view of catalogued ressources no matter in which catalogue they reside (also termed "federated discovery, see Use Case 3.3).
 
-from 1:1 to n:m 
+Similar holds true for data federations where users do not need to take care of the physical location of data. Access details are often hidden to the user.
 
-### 2.4.4 Federation Types: Geolocation of Participants, national / international Federations
+Identity Federations allow the use of a single electronic identity (hosted by an IdP, in the eduGAIN context called _home organization_) for authentication and authorization at a number of services (SPs) across different organizations.
+
+While Single-Sign-On (SSO) usually refers to an account / identity which can be used in connection with a number of different services within one organization (often in an automated manner), federated SSO extends this feature to different services (SPs) across organizations.
+
+A large number of Social Media Providers offer IdP services that allow login with their accounts, so services can easily connect to these IdPs to allow so-called _social logins_, e.g. Google, Facebook.
+Similar services are also offered by providers of a more professional or research context, e.g. LinkedIn or ORCID.
+
+
+### 2.4.4 Federation Types: Federation Size / Number and organizational structure of Participants
+
+Starting from 2 organisations that federate ressources or identities, federations may grow to any size.
+
+A typical small example is a bilateral identity federation where two organizations accept the identities (users) of the other organization and open up access to local ressources, e.g. catalogues, datasets or services.
+
+<Picture of such a federation, also refer to Use Case ESA DLR Bilateral>
+
+However, symmetry is not a requirement: organisation A may allow login with the Identity Provider (IdP) of organization B, but not vice versa.
+
+
+
+
+
+### 2.4.5 Federation Types: Geolocation of Participants, national / international Federations
 
 inside a single jurisdiction vs. cross-jurisdictional
 
-### 2.4.5 Federation Types: closed versus open Federations
+### 2.4.6 Federation Types: closed versus open Federations
 
 bilateral, trilateral, ... - fixed number of participants. allows to establish a federation contract between participants to define federation details, responsibilities, ...
 
 open Federations: e.g. national research Identity Federations, eduGAIN: participating IdPs and SPs changes over time
 contract between all participants is not feasible
 -> Solution: 
+
+### 2.4.7 Federation Types: Roles and Symmetry
 
 
 
