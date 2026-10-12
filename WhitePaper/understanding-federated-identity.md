@@ -32,21 +32,11 @@ Federated identity protocols like OAuth 2.0, OpenID Connect (OIDC), and SAML are
 
 <img width="460" height="360" alt="image" src="https://github.com/user-attachments/assets/da5e7a57-3a8b-4fe8-9bdf-8e6189c77dc9" />
 
+### 2.3.1 OAuth 2.0
 
-  - **OAuth 2.0**: Open Authorization 2.0 (OAuth 2.0) is an authorization standard that allows third-party applications to gain limited access to a user's resources without exposing their credentials.
+Open Authorization 2.0 (OAuth 2.0) is an authorization standard that allows third-party applications to gain limited access to a user's resources without exposing their credentials.
 
 <img width="488" height="288" alt="image" src="https://github.com/user-attachments/assets/fbc9ac54-4de4-44d7-ab55-6f7c06d9bbb5" />
-
-  - **OIDC**: OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0 to provie authentication. It allows useres to log in using a third-party identity provider.
-
-<img width="588" height="303" alt="image" src="https://github.com/user-attachments/assets/d042228a-c239-4af1-9602-40968d09e79a" />
-
-<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/8ff81ffc-ff8d-4356-a128-68b85b3a7c1a" />
-
-  - **OAuth/OIDC**: This shows a summary of the various Oauth/OIDC flows and their associated features
-  
-  - **SAML**: Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups. 
-
 
 ```{mermaid}
 sequenceDiagram
@@ -71,8 +61,15 @@ sequenceDiagram
     RS-->>Client: Protected resource
 ```
 
-### 2.3.1 OpenID Connect (OIDC)
-- **OIDC**: OpenID Connect is an identity layer built on top of OAuth 2.0 to provide authentication. It allows users to log in using a third-party identity provider.
+### 2.3.2 OpenID Connect (OIDC)
+
+OpenID Connect is an identity layer built on top of OAuth 2.0 to provide authentication. It allows users to log in using a third-party identity provider.
+
+<img width="588" height="303" alt="image" src="https://github.com/user-attachments/assets/d042228a-c239-4af1-9602-40968d09e79a" />
+
+The following image summarizes the various OAuth/OIDC flows and their associated features.
+
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/8ff81ffc-ff8d-4356-a128-68b85b3a7c1a" />
 
 ```{mermaid}
 sequenceDiagram
@@ -99,8 +96,13 @@ sequenceDiagram
     RS-->>Client: Protected resource
 ```
 
-### 2.3.2 Delegated OIDC
-- **Delegated OIDC**: This flow shows how a local broker can use a home OpenID Provider (OP) to authenticate a user and map that identity back to a local service.
+### 2.3.3 Security Assertion Markup Language (SAML)
+
+Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups.
+
+### 2.3.4 Delegated OIDC
+
+This flow shows how a local broker can use a home OpenID Provider (OP) to authenticate a user and map that identity back to a local service.
 
 ```{mermaid}
 sequenceDiagram
@@ -130,8 +132,9 @@ sequenceDiagram
     RP-->>User: Access granted
 ```
 
-### 2.3.3 Delegated Authentication
-- **Delegated Authentication via Federated Identity Provider**: When a user from one organization accesses a service in another, the local environment delegates authentication to the user's home Identity Provider.
+### 2.3.5 Delegated Authentication
+
+When a user from one organization accesses a service in another, the local environment delegates authentication to the user's home Identity Provider.
 
 ```{mermaid}
 sequenceDiagram
@@ -157,8 +160,6 @@ sequenceDiagram
 
     SP-->>User: Access granted
 ```
-
-  - **SAML**: Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups.
 
 ## 2.4 Federation Taxonomy
 
@@ -236,4 +237,3 @@ Used and useful references:
 [Data Space Support Centre - Data Sovereignty and Trust Pillar](https://dssc.eu/space/bv15e/766068339/Data+Sovereignty+and+Trust)
 
 [European Identity Wallet Reference architecture](https://digital-strategy.ec.europa.eu/en/library/european-digital-identity-wallet-architecture-and-reference-framework)
-
