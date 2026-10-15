@@ -42,21 +42,11 @@ Federated identity protocols like OAuth 2.0, OpenID Connect (OIDC), and SAML are
 
 <img width="460" height="360" alt="image" src="https://github.com/user-attachments/assets/da5e7a57-3a8b-4fe8-9bdf-8e6189c77dc9" />
 
+### 2.3.1 OAuth 2.0
 
-  - **OAuth 2.0**: Open Authorization 2.0 (OAuth 2.0) is an authorization standard that allows third-party applications to gain limited access to a user's resources without exposing their credentials.
+Open Authorization 2.0 (OAuth 2.0) is an authorization standard that allows third-party applications to gain limited access to a user's resources without exposing their credentials.
 
 <img width="488" height="288" alt="image" src="https://github.com/user-attachments/assets/fbc9ac54-4de4-44d7-ab55-6f7c06d9bbb5" />
-
-  - **OIDC**: OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0 to provie authentication. It allows useres to log in using a third-party identity provider.
-
-<img width="588" height="303" alt="image" src="https://github.com/user-attachments/assets/d042228a-c239-4af1-9602-40968d09e79a" />
-
-<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/8ff81ffc-ff8d-4356-a128-68b85b3a7c1a" />
-
-  - **OAuth/OIDC**: This shows a summary of the various Oauth/OIDC flows and their associated features
-  
-  - **SAML**: Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups. 
-
 
 ```{mermaid}
 sequenceDiagram
@@ -81,8 +71,15 @@ sequenceDiagram
     RS-->>Client: Protected resource
 ```
 
-### 2.4.1 OpenID Connect (OIDC)
-- **OIDC**: OpenID Connect is an identity layer built on top of OAuth 2.0 to provide authentication. It allows users to log in using a third-party identity provider.
+### 2.3.2 OpenID Connect (OIDC)
+
+OpenID Connect is an identity layer built on top of OAuth 2.0 to provide authentication. It allows users to log in using a third-party identity provider.
+
+<img width="588" height="303" alt="image" src="https://github.com/user-attachments/assets/d042228a-c239-4af1-9602-40968d09e79a" />
+
+The following image summarizes the various OAuth/OIDC flows and their associated features.
+
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/8ff81ffc-ff8d-4356-a128-68b85b3a7c1a" />
 
 ```{mermaid}
 sequenceDiagram
@@ -109,8 +106,13 @@ sequenceDiagram
     RS-->>Client: Protected resource
 ```
 
-### 2.4.2 Delegated OIDC
-- **Delegated OIDC**: This flow shows how a local broker can use a home OpenID Provider (OP) to authenticate a user and map that identity back to a local service.
+### 2.3.3 Security Assertion Markup Language (SAML)
+
+Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups.
+
+### 2.3.4 Delegated OIDC
+
+This flow shows how a local broker can use a home OpenID Provider (OP) to authenticate a user and map that identity back to a local service.
 
 ```{mermaid}
 sequenceDiagram
@@ -140,8 +142,9 @@ sequenceDiagram
     RP-->>User: Access granted
 ```
 
-### 2.4.3 Delegated Authentication
-- **Delegated Authentication via Federated Identity Provider**: When a user from one organization accesses a service in another, the local environment delegates authentication to the user's home Identity Provider.
+### 2.3.5 Delegated Authentication
+
+When a user from one organization accesses a service in another, the local environment delegates authentication to the user's home Identity Provider.
 
 ```{mermaid}
 sequenceDiagram
@@ -168,42 +171,62 @@ sequenceDiagram
     SP-->>User: Access granted
 ```
 
-  - **SAML**: Security Assertion Markup Language (SAML) is an open-standard XML-based data format that allows secure sharing of authentication and authorization data between different organizations or systems. It allows a user to log in once (via their organization's identity provider) and then access various partner applications or enterprise services without needing to re-enter credentials. SAML is used by both the IdPs and SPs within federated identity management setups.
-
-## 2.5 Federation Taxonomy
-<mark>Note</mark> _[UR]_ initial content/structure for this new section. Just a proposal, please add/update/comment.
+## 2.4 Federation Taxonomy
 
 ### 2.5.1 Overview
 _Federating something_ means making a resource or asset inside an organization accessible to one or more other organizations.
-An organization may federate different types or resources or assets: Identities, Services, Data, Catalogues etc. (see section _Federation Types: Type of federated Ressources_ below).
+An organization may federate different types of resources or assets: Identities, Services, Data, Catalogues etc. (see section _Federation Types: Type of federated Ressources_ below).
 
-Federations vary extremely in size: from 1:1 bilateral federations with two participants up to n:m (IdP:SP) open federations with a varying and sometimes very high number of participants (example: eduGAIN).
+Federations vary extremely in size: from 1:1 bilateral federations with two participants (e.g. see Use Case 3.3) up to n:m (IdP:SP) open federations with a varying and sometimes very high number of participants (example: eduGAIN, see Use Case 3.4).
 
 The type of information exchanged between participants in a federation also has legal and compliance implications. If personal data of users is transferred between participants of a federation data protection requirements must be met. Depending on the type of data exchanged, additional legal requirements may apply, too (e.g. export control law).
 
+### 2.4.2 Network of Trust and the "Federation Contract"
 
 
-### 2.5.2 Federation Types: Type of federated Ressources
 
-Identities, Data, Catalogues, ...
 
-### 2.5.3 Federation Types: Federation Size / Number and organizational structure of Participants
+### 2.4.3 Federation Types: Type of federated Ressources
 
-Identity Federation = cross-organizational version of SSO
+Catalogue federations allows to search multiple catalogues as if they were one, providing an aggregated view of catalogued ressources no matter in which catalogue they reside (also termed "federated discovery, see Use Case 3.3).
 
-from 1:1 to n:m 
+Similar holds true for data federations where users do not need to take care of the physical location of data. Access details are often hidden to the user.
 
-### 2.5.4 Federation Types: Geolocation of Participants, national / international Federations
+Identity Federations allow the use of a single electronic identity (hosted by an IdP, in the eduGAIN context called _home organization_) for authentication and authorization at a number of services (SPs) across different organizations.
+
+While Single-Sign-On (SSO) usually refers to an account / identity which can be used in connection with a number of different services within one organization (often in an automated manner), federated SSO extends this feature to different services (SPs) across organizations.
+
+A large number of Social Media Providers offer IdP services that allow login with their accounts, so services can easily connect to these IdPs to allow so-called _social logins_, e.g. Google, Facebook.
+Similar services are also offered by providers of a more professional or research context, e.g. LinkedIn or ORCID.
+
+
+### 2.4.4 Federation Types: Federation Size / Number and organizational structure of Participants
+
+Starting from 2 organisations that federate ressources or identities, federations may grow to any size.
+
+A typical small example is a bilateral identity federation where two organizations accept the identities (users) of the other organization and open up access to local ressources, e.g. catalogues, datasets or services.
+
+<Picture of such a federation, also refer to Use Case ESA DLR Bilateral>
+
+However, symmetry is not a requirement: organisation A may allow login with the Identity Provider (IdP) of organization B, but not vice versa.
+
+
+
+
+
+### 2.4.5 Federation Types: Geolocation of Participants, national / international Federations
 
 inside a single jurisdiction vs. cross-jurisdictional
 
-### 2.5.5 Federation Types: closed versus open Federations
+### 2.4.6 Federation Types: closed versus open Federations
 
 bilateral, trilateral, ... - fixed number of participants. allows to establish a federation contract between participants to define federation details, responsibilities, ...
 
 open Federations: e.g. national research Identity Federations, eduGAIN: participating IdPs and SPs changes over time
 contract between all participants is not feasible
 -> Solution: 
+
+### 2.4.7 Federation Types: Roles and Symmetry
 
 
 
@@ -224,4 +247,3 @@ Used and useful references:
 [Data Space Support Centre - Data Sovereignty and Trust Pillar](https://dssc.eu/space/bv15e/766068339/Data+Sovereignty+and+Trust)
 
 [European Identity Wallet Reference architecture](https://digital-strategy.ec.europa.eu/en/library/european-digital-identity-wallet-architecture-and-reference-framework)
-

@@ -160,18 +160,12 @@ Beyond interactive user access, the ESA and NASA MAAP platforms may also establi
 :class: image-spaced
 ```
 
-[NASA MAAP](https://maap-project.org/)
-
-[ESA MAAP (BIOMASS)](https://portal.maap.eo.esa.int/biomass/)
-
-## 3.2 DestinE (TBC)
-DestinE has two federated solutions in place: 
-1. Federated Identity Provider: A federated IdP generates client credentials which are passed to the DESP Admin. They configure client credentials and specific settings. The DESP login panel then shows the added IdP IAM. Federated IdPs can login into the DestinE platform without needing to create a DESP account. 
-2. Federated Services: Similiar to the federated IdP, federated services generate client credentials which are passed to the Fed. Service Admin who configures client credentials and specific settings. These are then passed to the federated service login panel which shows the DESP IAM as an IdP. Examples of these services are SesamEO and other data access services of the platform like Eden, DCMS, HDA, etc. A dedicated DestinE-IAM Documentation is provided to SPs when performing the onboarding.
-
-[DestinE Platform Onboarding Policy and Process v2.6](https://platform.destine.eu/wp-content/uploads/2024/11/DEST-SRCO-PR-2300339-Onboarding-Policy-and-Process-v2.6.pdf)
+## 3.2 NASA Use Case (TBC)
+NASA Federated Authentication and Authorization
 
 ## 3.3 Bilateral ESA-DLR Demonstrator
+
+### 3.3.1 Federated Discovery, Federated Access
 The bilateral ESA-DLR Demonstrator activity focuses on use cases regarding _Federated Discovery_ and _Federated Access_:
 - _Federated Discovery_ refers to the ability to search for and discover data across several repositories hosted by different organizations in a unified way;
 - _Federated Access_ refers to the ability to retrieve data using the digital identity (credentials) of the home organization no matter what organization participating in the identity federation is hosting the data.
@@ -191,6 +185,9 @@ The following use cases (UC) are considered:
 
 Some example data from free and open datasets have been selected to be hosted in repositories on both ESA and DLR side. This example data is also made available and discoverable in ESA and DLR STAC catalogues (see picture below).
 
+### 3.3.2 Architecture
+
+The following images show the architecture of the Demonstrator.
 
 ```{image} img/ESA_DLR_Demonstrator_STAC.png
 :alt: ESA DLR Demonstrator Federated STAC catalogues
@@ -198,11 +195,9 @@ Some example data from free and open datasets have been selected to be hosted in
 :class: image-spaced
 ```
 
-
 On ESA and DLR side an Identity and Access Management (IAM) system manages digital identities (accounts) of ESA and DLR users, respectively.
 Both IAM act as Service Provider for the ESA / DLR service that hosts the restrained datasets (the ESA IAM protects the ESA repository, the ESA IAM protects the DLR repository).
 As Identity Providers, both ESA and DLR IAM are configured to form a ESA/DLR Demonstrator Identity Federation.
-
 
 ```{image} img/ESA_DLR_Demonstrator_Building_Blocks.png
 :alt: ESA DLR Demonstrator Building Blocks: Federated Identity Providers, federated services.png
@@ -218,6 +213,49 @@ This allows ESA users to use their ESA accounts to access data hosted in the DLR
 - the ESA IAM generates an authentication token and submits it to the DLR IAM
 - the DLR IAM trusts the ESA IAM authentication token, generates a local authentication token and submits it to the DLR repository
 - the DLR repository detects that the ESA user is authenticated, checks the authorization information contained in the token, and if authorized provides access to the restrained data.
+
+### 3.3.3 Showcase: Participation in eduGAIN
+
+Section 3.4 describes eduGAIN, the global identity meta-federation in the research and education domain.
+For demonstration purposes the DLR IdP has been configured to participate in the German National Identity Federation DFN-AAI (test environment), as membership in a national identity federation is a pre-requisite for eduGAIN access.
+For this purpose, an application to register the DLR IdP as "ESA DLR Demonstrator Service Provider" has been submitted to DFN-AAI and received approval.
+
+From the users' point of view an additional login option now appears on the login dialog, as can be seen in the following screenshot:
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN1.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Login options.png
+:width: 90%
+:class: image-spaced
+```
+
+As a result, in addition to being able to 1) login with a local DLR IdP account and 2) login with an ESA EOIAM account a third option "Login with DFN-AAI/eduGAIN" appears.
+Klicking on "Login with DFN-AAI/eduGAIN" will open an IdP selection dialog of the national identity federation (in this case: DFN-AAI) where users can select their home organization.
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN2.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Selection of home organization IdP via National Science and Research Identity Federation, here: German DFN-AAI.png
+:width: 90%
+:class: image-spaced
+```
+
+Starting to type the name of the home organization narrows down the list of available IdPs (the screenshot shows the DFN-AAI test system where not all IdPs available in the productive eduGAIN are available).
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN3.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Selection of home organization IdP via National Science and Research Identity Federation, here: German DFN-AAI.png
+:width: 90%
+:class: image-spaced
+```
+
+In this example, "DLR" is selected as IdP to be used for login.
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN4.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Example: Selection of DLR IdP via eduGAIN.png
+:width: 90%
+:class: image-spaced
+```
+
+If the user already has a running single-sign-on session within the home organization, no additional logins are required and the user is authenticated.
+
+As this small demonstrator-based login sequence shows, in real application scenarios users can log into service using their main account of the home organization without the need to register additional service-specific accounts.
 
 ## 3.4 EOEPCA+ - Earth Observation Exploitation Common Architecture
 
@@ -257,6 +295,35 @@ This use case describes a generic scenario of platform federation, where a user 
 
 * Tokens are either accepted cross-platform, or are otherwise exchanged/transformed for consumption at the 'other' platform - with possible scope reduction
 
+### 3.4.3 Overview of the EOEPCA+ IAM Approach
+
+EOEPCA+ provides a framework approach to IAM that includes:
+* Authentication via OpenID Connect (OIDC)
+* Authorization via either:
+  * Keycloak via User-Managed Access (UMA)
+  * Open Policy Agent (OPA)
+* Single-sign-on (SSO) by integration of external identity providers
+
+The EOEPCA+ reference implementation showcases this approach using Keycloak as the OIDC provider, supported by APISIX Ingress Controller that acts as Policy Enforcement Point (PEP). Policy decisions are enforced based on the authorization policies defined in Keycloak and OPA.
+
+As illustrated in the following diagram, APISIX provides dedicated plugins that enforce these policies at runtime, ensuring that only authorized requests are allowed to reach the backend services - plugins: `openid-connect`, `authz-keycloak` and `opa`.
+
+```{image} img/eoepca-iam-approach.drawio.png
+:alt: EOEPCA+ IAM Approach
+:width: 80%
+:class: image-spaced
+```
+
+The authN flow establishes an access token as a JWT. The claims expressed within the JWT are then relied upon during evaluation of the authZ policy decision - for example, the user's roles/groups/permissions defined in Keycloak, or custom attributes evaluated by OPA.
+
+The EOEPCA+ reference implementation integrates with various identity provides for identity reuse and SSO, including:
+* GitHub
+* ESA EOIAM
+* eduGAIN
+* Codeberg
+
+Open Policy Agent (OPA) is deployed alongside OPAL, which synchronizes policy data from a GitHub repository to OPA.
+
 ## 3.5 eduGAIN
 ### 3.5.1 Overview
 eduGAIN is a global meta-federation that interconnects national research and education identity federations worldwide {cite}`eduGAIN`. It enables students and researchers to access international digital services using their home institution credentials through single sign-on. By establishing a common trust framework and technical standards, the system ensures secure interoperability between participating organizations across different countries. This infrastructure eliminates the need for separate accounts, significantly simplifying collaboration for the global academic community. Operated by GÉANT, the platform empowers international research cooperation by standardizing identity management and facilitating seamless access to shared resources.
@@ -277,12 +344,12 @@ To participate as a Service Provider, your organization cannot join eduGAIN dire
 #### Participation as Identity Provider
 To participate as an Identity Provider, your organization must first join your national or regional research and education federation, as direct membership in eduGAIN is not available. Contact your national federation's support team to register your identity system and agree to their participation policies. You will need to ensure your technical infrastructure complies with SAML standards and eduGAIN's attribute release requirements. Once your national federation validates your configuration and legal agreements, they will publish your metadata to the eduGAIN meta-federation. This process enables users from other participating countries to authenticate using your institution's credentials. Ultimately, this expands your institution's reach by allowing global researchers to access your resources securely.
 
-### 3.5.3 AARC Blueprint Architecture
+### 3.5.4 AARC Blueprint Architecture
 The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive reference model for identity and access management within the research and education sector. It defines the technical and policy standards necessary to achieve seamless interoperability between distinct identity federations. Serving as the foundation for eduGAIN, this blueprint ensures that participating national federations can trust and exchange identity data securely across borders. The architecture specifies critical protocols and attribute release policies that govern how users authenticate and access remote services. This standardization allows researchers to maintain a consistent digital identity regardless of their specific location or institution. Consequently, the AARC Blueprint acts as the essential technical backbone that sustains the global connectivity and trust model of eduGAIN.
 
 The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
 
-#### 3.4.4 EOEPCA+ and DLR Integration Scenarios
+### 3.5.5 EOEPCA+ and DLR Integration Scenarios
 The use case involves the EOEPCA+ Identity and Access Management (IAM) Building Block and the DLR EOC Geoservice.
 
 EOEPCA+ provides a Common Architecture and reusable Building Blocks for organizations developing or integrating EO platforms and services. The EOEPCA+ IAM Building Block provides reusable authentication and authorization capabilities for services adopting the EOEPCA+ Common Architecture.
@@ -298,7 +365,7 @@ The two activities follow different integration approaches:
 
 The main architectural difference is where protocol adaptation takes place and who operates the corresponding integration component. The implications of these approaches are discussed further in the *Challenges and Strategic Solutions* chapter.
 
-#### 3.4.4.1 Intended Authentication Scenario
+#### Intended Authentication Scenario
 
 A researcher accessing an EO service authenticates using an existing account at their home institution.
 
@@ -308,7 +375,7 @@ Following successful authentication by the user's home Identity Provider, the EO
 
 In an EOEPCA+-based environment, the IAM Building Block can expose this federation capability to multiple connected services.
 
-#### 3.4.4.2 Implementation Scope and Expected Contribution
+#### Implementation Scope and Expected Contribution
 
 Work on the integration is in progress, and more implementation and interfederation testing is planned.
 
@@ -318,6 +385,7 @@ A key objective is to document the end-to-end process so EO service operators ca
 
 ### References
 <mark>Note</mark> _[UR]: references are now converted to bibtex entries. If citing works this section will be removed_
+
 
 ## 3.6 SSI Decentralised
 
