@@ -168,6 +168,8 @@ Beyond interactive user access, the ESA and NASA MAAP platforms may also establi
 NASA Federated Authentication and Authorization
 
 ## 3.3 Bilateral ESA-DLR Demonstrator
+
+### 3.3.1 Federated Discovery, Federated Access
 The bilateral ESA-DLR Demonstrator activity focuses on use cases regarding _Federated Discovery_ and _Federated Access_:
 - _Federated Discovery_ refers to the ability to search for and discover data across several repositories hosted by different organizations in a unified way;
 - _Federated Access_ refers to the ability to retrieve data using the digital identity (credentials) of the home organization no matter what organization participating in the identity federation is hosting the data.
@@ -187,6 +189,9 @@ The following use cases (UC) are considered:
 
 Some example data from free and open datasets have been selected to be hosted in repositories on both ESA and DLR side. This example data is also made available and discoverable in ESA and DLR STAC catalogues (see picture below).
 
+### 3.3.2 Architecture
+
+The following images show the architecture of the Demonstrator.
 
 ```{image} img/ESA_DLR_Demonstrator_STAC.png
 :alt: ESA DLR Demonstrator Federated STAC catalogues
@@ -194,11 +199,9 @@ Some example data from free and open datasets have been selected to be hosted in
 :class: image-spaced
 ```
 
-
 On ESA and DLR side an Identity and Access Management (IAM) system manages digital identities (accounts) of ESA and DLR users, respectively.
 Both IAM act as Service Provider for the ESA / DLR service that hosts the restrained datasets (the ESA IAM protects the ESA repository, the ESA IAM protects the DLR repository).
 As Identity Providers, both ESA and DLR IAM are configured to form a ESA/DLR Demonstrator Identity Federation.
-
 
 ```{image} img/ESA_DLR_Demonstrator_Building_Blocks.png
 :alt: ESA DLR Demonstrator Building Blocks: Federated Identity Providers, federated services.png
@@ -214,6 +217,49 @@ This allows ESA users to use their ESA accounts to access data hosted in the DLR
 - the ESA IAM generates an authentication token and submits it to the DLR IAM
 - the DLR IAM trusts the ESA IAM authentication token, generates a local authentication token and submits it to the DLR repository
 - the DLR repository detects that the ESA user is authenticated, checks the authorization information contained in the token, and if authorized provides access to the restrained data.
+
+### 3.3.3 Showcase: Participation in eduGAIN
+
+Section 3.4 describes eduGAIN, the global identity meta-federation in the research and education domain.
+For demonstration purposes the DLR IdP has been configured to participate in the German National Identity Federation DFN-AAI (test environment), as membership in a national identity federation is a pre-requisite for eduGAIN access.
+For this purpose, an application to register the DLR IdP as "ESA DLR Demonstrator Service Provider" has been submitted to DFN-AAI and received approval.
+
+From the users' point of view an additional login option now appears on the login dialog, as can be seen in the following screenshot:
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN1.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Login options.png
+:width: 90%
+:class: image-spaced
+```
+
+As a result, in addition to being able to 1) login with a local DLR IdP account and 2) login with an ESA EOIAM account a third option "Login with DFN-AAI/eduGAIN" appears.
+Klicking on "Login with DFN-AAI/eduGAIN" will open an IdP selection dialog of the national identity federation (in this case: DFN-AAI) where users can select their home organization.
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN2.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Selection of home organization IdP via National Science and Research Identity Federation, here: German DFN-AAI.png
+:width: 90%
+:class: image-spaced
+```
+
+Starting to type the name of the home organization narrows down the list of available IdPs (the screenshot shows the DFN-AAI test system where not all IdPs available in the productive eduGAIN are available).
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN3.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Selection of home organization IdP via National Science and Research Identity Federation, here: German DFN-AAI.png
+:width: 90%
+:class: image-spaced
+```
+
+In this example, "DLR" is selected as IdP to be used for login.
+
+```{image} img/ESA_DLR_Demonstrator_eduGAIN4.png
+:alt: ESA DLR Demonstrator: Integration of eduGAIN on DLR IdP side, Example: Selection of DLR IdP via eduGAIN.png
+:width: 90%
+:class: image-spaced
+```
+
+If the user already has a running single-sign-on session within the home organization, no additional logins are required and the user is authenticated.
+
+As this small demonstrator-based login sequence shows, in real application scenarios users can log into service using their main account of the home organization without the need to register additional service-specific accounts.
 
 ## 3.4 eduGAIN
 ### 3.4.1 Overview
