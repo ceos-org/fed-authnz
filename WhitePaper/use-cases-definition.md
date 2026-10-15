@@ -164,12 +164,8 @@ Beyond interactive user access, the ESA and NASA MAAP platforms may also establi
 
 [ESA MAAP (BIOMASS)](https://portal.maap.eo.esa.int/biomass/)
 
-## 3.2 DestinE (TBC)
-DestinE has two federated solutions in place: 
-1. Federated Identity Provider: A federated IdP generates client credentials which are passed to the DESP Admin. They configure client credentials and specific settings. The DESP login panel then shows the added IdP IAM. Federated IdPs can login into the DestinE platform without needing to create a DESP account. 
-2. Federated Services: Similiar to the federated IdP, federated services generate client credentials which are passed to the Fed. Service Admin who configures client credentials and specific settings. These are then passed to the federated service login panel which shows the DESP IAM as an IdP. Examples of these services are SesamEO and other data access services of the platform like Eden, DCMS, HDA, etc. A dedicated DestinE-IAM Documentation is provided to SPs when performing the onboarding.
-
-[DestinE Platform Onboarding Policy and Process v2.6](https://platform.destine.eu/wp-content/uploads/2024/11/DEST-SRCO-PR-2300339-Onboarding-Policy-and-Process-v2.6.pdf)
+## 3.2 NASA Use Case (TBC)
+NASA Federated Authentication and Authorization
 
 ## 3.3 Bilateral ESA-DLR Demonstrator
 The bilateral ESA-DLR Demonstrator activity focuses on use cases regarding _Federated Discovery_ and _Federated Access_:
@@ -237,10 +233,6 @@ The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive ref
 
 The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
 
-### References
-<mark>Note</mark> _[UR]: references are now converted to bibtex entries. If citing works this section will be removed_
-
-
 ## 3.5 EOEPCA+ - Earth Observation Exploitation Common Architecture
 
 Cloud-based platforms have proven to be an essential cornerstone for a paradigm shift in Earth Observation (EO), suitable to allow science and application initiatives to efficiently manage the huge volume of data availability in a “bring-the-user-to-the-data” paradigm. This paradigm has been demonstrated to be a critical enabler of innovation and acceleration, which in the European context needs to leverage a fragmented cloud and platform ecosystem, developed with a multitude of industrial and public investments at European and National level.
@@ -278,6 +270,35 @@ This use case describes a generic scenario of platform federation, where a user 
 * Trust relationships are established amongst the federated platforms
 
 * Tokens are either accepted cross-platform, or are otherwise exchanged/transformed for consumption at the 'other' platform - with possible scope reduction
+
+### 3.5.3 Overview of the EOEPCA+ IAM Approach
+
+EOEPCA+ provides a framework approach to IAM that includes:
+* Authentication via OpenID Connect (OIDC)
+* Authorization via either:
+  * Keycloak via User-Managed Access (UMA)
+  * Open Policy Agent (OPA)
+* Single-sign-on (SSO) by integration of external identity providers
+
+The EOEPCA+ reference implementation showcases this approach using Keycloak as the OIDC provider, supported by APISIX Ingress Controller that acts as Policy Enforcement Point (PEP). Policy decisions are enforced based on the authorization policies defined in Keycloak and OPA.
+
+As illustrated in the following diagram, APISIX provides dedicated plugins that enforce these policies at runtime, ensuring that only authorized requests are allowed to reach the backend services - plugins: `openid-connect`, `authz-keycloak` and `opa`.
+
+```{image} img/eoepca-iam-approach.drawio.png
+:alt: EOEPCA+ IAM Approach
+:width: 80%
+:class: image-spaced
+```
+
+The authN flow establishes an access token as a JWT. The claims expressed within the JWT are then relied upon during evaluation of the authZ policy decision - for example, the user's roles/groups/permissions defined in Keycloak, or custom attributes evaluated by OPA.
+
+The EOEPCA+ reference implementation integrates with various identity provides for identity reuse and SSO, including:
+* GitHub
+* ESA EOIAM
+* eduGAIN
+* Codeberg
+
+Open Policy Agent (OPA) is deployed alongside OPAL, which synchronizes policy data from a GitHub repository to OPA.
 
 ## 3.6 SSI Decentralised
 

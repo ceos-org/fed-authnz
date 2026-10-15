@@ -69,6 +69,15 @@ The use cases collected in this White Paper provide a basis for examining practi
 ## Terms and Definitions
 
 ```{glossary}
+AAA
+    Authentication, Authorization and Accounting
+
+Authn
+    Authentication
+
+AuthZ
+    Authorization
+
 DCS
     Data Centric Security
 
@@ -77,6 +86,9 @@ DID
 
 EO
     Earth Observation
+
+IAM
+    Identity and Access Management
 
 IPT
     Integrity Provenance Trust
@@ -87,8 +99,23 @@ ISO
 OGC 
     Open Geospatial Consortium
 
+PDP
+    Policy Decision Point
+
+PEP
+    Policy Enforcement Point
+
+PIP
+    Policy Information Point
+
 SSI
     Self-sovereign identity
+
+SSO
+    Single Sign-on
+
+SLO
+    Single Logout
 
 VC 
     Verifiable Credential
