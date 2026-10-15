@@ -1,16 +1,16 @@
-# Conclusions: Way Forward
+# 5. Conclusions: Way Forward
 
 This chapter summarizes the key findings and outlines the recommended path forward for implementing federated authentication and authorization in Earth Observation systems.
 
-## Call to Action/Recommendation
+## 5.1 Call to Action/Recommendation
 
-## Future Best Practices?
-### Reusable Federation Capabilities and Future Directions
+## 5.2 Future Best Practices?
+### 5.2.1 Reusable Federation Capabilities and Future Directions
 The EOEPCA+ and DLR integration cases show how established research-and-education federation infrastructure can be tied into EO services, even when the architectural handover points differ. The core themes remain the same: protocol compatibility, building trust, agreeing on identity attributes, and making operational ownership explicit.
 
 Work done at the implementation level can serve as grounded guidance for other EO operators who run into similar integration needs. In the EOEPCA+ setup, the common IAM layer becomes a repeatable integration point for federation, while each EO environment still keeps authority over access to its own resources.
 
-#### OpenID Federation as a Potential Future Direction
+### 5.2.2 OpenID Federation as a Potential Future Direction
 OpenID Federation could offer a complementary way to set up trust relationships among independently run OIDC-based identity systems.
 
 That option could matter for EO settings where multiple organizations run their own IAM services and want to connect them without depending only on one-off, bilateral OIDC arrangements.
