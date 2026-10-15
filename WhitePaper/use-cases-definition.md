@@ -160,10 +160,6 @@ Beyond interactive user access, the ESA and NASA MAAP platforms may also establi
 :class: image-spaced
 ```
 
-[NASA MAAP](https://maap-project.org/)
-
-[ESA MAAP (BIOMASS)](https://portal.maap.eo.esa.int/biomass/)
-
 ## 3.2 NASA Use Case (TBC)
 NASA Federated Authentication and Authorization
 
