@@ -82,7 +82,6 @@ Documenting these flows and the corresponding operational responsibilities provi
 
 ### 4.3.3 Data Protection, Transfer of Personal Data
 
-#### Introduction
 Federated authentication typically involves transfer of personal data stored in the user account at the IdP to the SP.
 The Policy Enforcement Point (PEP) on the SP side checks the information transmitted from the IdP regarding authorization.
 
@@ -94,7 +93,6 @@ If the IdP and SP are located in different jurisdictions, then a legal basis for
 Depending on the specific use case and requirements, special sub-types of identity federations may be designed,
 e.g. anonymous federations (the IdP sends information to the SP that is anonymous from the point of view of the SP)
 or delegated authorization where (most of the) authorization checks are delegated from the SP to the IdP.
-
 
 #### The General Data Protection Regulation of the European Union
 The General Data Protection Regulation (GDPR) of the European Union (EU) defines a common data protection framework for the member states of the EU as well as entities worldwide that provide services inside the EU that involve the processing of personal data (Article 3 GDPR, territorial scope, https://gdpr-info.eu/art-3-gdpr/).
@@ -108,7 +106,6 @@ Transferring personal data to partners outside the territorial scope of the GDPR
 Thus, if an IdP residing in an EU country wants to transfer personal data to an SP residing outside the GDPR territory, this has to be taken into account.
 Vice versa, if a SP residing in an EU country receives personal data from an international IdP, GDPR is fully applicable.
 
-
 #### ESA Personal Data Protection Policy (PDP) Framework
 
 As an International Organisation, ESA has defined a Personal Data Protection Policy (PDP) Framework composed of the following elements:
@@ -119,7 +116,6 @@ As an International Organisation, ESA has defined a Personal Data Protection Pol
 (online at https://esamultimedia.esa.int/docs/LEX-L/ESA_Principles_of_PDP_Rules_of_Procedure_for_DPSA_and_Policy.pdf).
 
 (to be further filled by ESA, or removed if not enough content or not considered relevant enough)
-
 
 #### International Transfer of Personal Data in eduGAIN
 
