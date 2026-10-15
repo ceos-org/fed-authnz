@@ -21,12 +21,22 @@ IAM ensures that the right individuals and entities have the appropriate access 
 - **Single Sign-on (SSO):** SSO is an authentication scheme that allows a user to log in with a single ID to any of several related, yet independent, software systems within an organization. True single sign-on allows the user to log in once and access services without re-entering authentication factors.
 - **Single Logout (SLO):**  SLO, as counterpart to SSO, is the mechanism by which a user is able to sign-out (logout) of all of the applications they signed into with single sign-on (SSO) including the identity provider.
 
-## 2.2 User Access Process
+## 2.2 Interfederation as a Model for Cross-Organizational Trust
+
+Bilateral identity federation requires individual trust relationships between Identity Providers and Service Providers, which becomes increasingly difficult to manage as the number of participating organizations grows.
+
+National research and education identity federations provide a common framework for participation and trust. 
+Interfederation connects these existing federations, allowing institutions to retain their identity infrastructure and participate through their respective national federation.
+
+EduGAIN is an established example of this model, interconnecting research and education identity federations internationally. 
+In the EO context, services can use this infrastructure to authenticate users from participating research institutions without establishing separate identity integrations with each institution.
+
+## 2.3 User Access Process
 1. User Authentication: The user verifies their identity, typically via an Identity Provider (IdP), to initiate access. This step is crucial in federated systems where authentication is delegated across domains.
 2. Role Activation: Once authenticated, the user's roles and permissions are determined, often conveyed through protocol-specific tokens or assertions (e.g., claims in OIDC or attributes in SAML).
 3. Access Application / Services: Based on the authenticated identity and activated roles, the user is authorized to access protected applications or services, with access tokens (OAuth 2.0) or assertions (SAML) facilitating secure communication.
    
-## 2.3 Foundation Protocols Driving Federation
+## 2.4 Foundation Protocols Driving Federation
 
 Federated identity protocols like OAuth 2.0, OpenID Connect (OIDC), and SAML are designed to support and secure each step of the user access process, enabling trusted identity verification, role-based access control, and seamless service authorization across organizational boundaries.
 
@@ -163,7 +173,7 @@ sequenceDiagram
 
 ## 2.4 Federation Taxonomy
 
-### 2.4.1 Overview
+### 2.5.1 Overview
 _Federating something_ means making a resource or asset inside an organization accessible to one or more other organizations.
 An organization may federate different types of resources or assets: Identities, Services, Data, Catalogues etc. (see section _Federation Types: Type of federated Ressources_ below).
 
