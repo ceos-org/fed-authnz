@@ -18,9 +18,13 @@ The ongoing EOEPCA+ and DLR activities examine two approaches:
 
 **Federation-provided integration:** The DLR EOC Geoservice uses an OIDC proxy provided by DFN-AAI. Parts of the federation-specific functionality are therefore operated by the federation provider, while the service uses an OIDC-facing integration.
 
-[Figure X: Federation Integration Approaches for the EOEPCA+ IAM Building Block and DLR EOC Geoservice]
-
 The figure illustrates these two integration scenarios, with particular emphasis on the location of protocol adaptation and the resulting operational responsibilities.
+
+```{image} img/eoepca_dlr_edugain_architecture.png
+:alt: EOEPCA DLR eduGAIN architecture
+:width: 90%
+:class: image-spaced
+```
 
 ### 4.1.3 Comparison of Federation Integration Approaches
 Both approaches connect EO services to the existing federation infrastructure but differ in where federation-specific functionality is operated.
