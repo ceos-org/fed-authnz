@@ -349,8 +349,8 @@ The AARC Blueprint Architecture {cite}`AARC_BPA` establishes a comprehensive ref
 
 The AARC Blueprint Architecture also serves as a rich source of Information, Guidelines and Best Practices on all levels of technical, organisational, legal (as far as possible) and security matters around identity federation topics {cite}`AARC_Guidelines`.
 
-### 3.5.5 EOEPCA+ and DLR Integration Scenarios
-The use case involves the EOEPCA+ Identity and Access Management (IAM) Building Block and the DLR EOC Geoservice.
+### 3.5.5 eduGAIN Integration Scenarios for EOEPCA+ and DLR
+The use case explores how eduGAIN can be used to enable federated authentication for Earth Observation services, allowing researchers to access EO resources using their existing institutional identities. The integration is examined through two scenarios involving the EOEPCA+ Identity and Access Management (IAM) Building Block and the DLR EOC Geoservice.
 
 EOEPCA+ provides a Common Architecture and reusable Building Blocks for organizations developing or integrating EO platforms and services. The EOEPCA+ IAM Building Block provides reusable authentication and authorization capabilities for services adopting the EOEPCA+ Common Architecture.
 
