@@ -167,14 +167,14 @@ Additionally NASA has varying levels of authentication at its disposal. A NASA u
 
 For data producers who do not have NASA credentials, the ability to manage their own metadata resources within ESDIS will reduce friction and lead to higher quality metadata. By allowing Multi-factor Authentication (MFA) we can give other agencies the ability to manage their metadata (and only their metadata) directly.
 
-For NASA, the benefits are less risk and more opportunities. We can reduce the need to manage credentials ourselves, improve our security posture by offloading authenticiation to independent identity providers, use MFA where necessary and scale our capabilities without increasing the burden on Earthdata Login.
+For NASA, the benefits are less risk and more opportunities. We can reduce the need to manage credentials ourselves, improve our security posture by offloading authentication to independent identity providers, use MFA where necessary and scale our capabilities without increasing the burden on Earthdata Login.
 
 
 ### 3.2.1 Federated Discovery, Federated Access
 NASA ESDIS employs an Identity Federation service to allow Earthdata Login to leverage multiple identity providers when managing users who wish to discover and access ESDIS data. This identity federation service uses [KeyCloak](https://www.keycloak.org/) which provides single sign-on, identity brokering, social login and user federation. Currently ESDIS supports the following identity providers,
 - Earthdata Login
 - NASA Launchpad
-- AWS Congnito MFA
+- AWS Cognito MFA
 - Google
 - ESA
 
@@ -182,7 +182,7 @@ For a variety of ESDIS applications.
 
 ### 3.2.2 ESA/NASA MAAP
 
-ESDIS provides Multi-Mission Algorithm and Analysis Platform (MAAP) users with the ability to authenticate against ESA identity providers when access the following NASA applications
+ESDIS provides Multi-Mission Algorithm and Analysis Platform (MAAP) users with the ability to authenticate against ESA identity providers when accessing the following NASA applications
 - [Multi-Mission Algorithm and Analysis Platform](https://maap-project.org/)
 - [Earthdata Search](https://search.earthdata.nasa.gov)
 
@@ -190,7 +190,7 @@ This is an excellent example of the desired reduced friction when accessing data
 
 ### 3.2.3 CEOS data curators
 
-CEOS metadata curators will now be able to manage their collection metadata holdings in NASA ESDIS' Common Metadata Repository (CMR) directly rather than using a proxy who has NASA credentials. CEOS metadata curators are silo'd into their own set of metadata records and can only modify records they own. CEOS metadata curators authenticate using AWS Cognito MFA based on identities that are established manually by CEOS and NASA ESDIS. Once identity is established and credentials granted the veracity of an authentication is ensured by MFA.
+CEOS metadata curators will now be able to manage their collection metadata holdings in NASA ESDIS' Common Metadata Repository (CMR) directly rather than using a proxy who has NASA credentials. CEOS metadata curators are siloed into their own set of metadata records and can only modify records they own. CEOS metadata curators authenticate using AWS Cognito MFA based on identities that are established manually by CEOS and NASA ESDIS. Once identity is established and credentials granted the veracity of an authentication is ensured by MFA.
 
 ### 3.2.4 New users
 
